@@ -1,0 +1,62 @@
+/* ==========================================================================
+   COMPONENT - Accordion ikut tema
+   ========================================================================== */
+/* Accordion ikut tema */
+.accordion-isisa {
+    --bs-accordion-border-color: var(--isisa-border);
+    --bs-accordion-border-radius: var(--isisa-radius-md);
+    --bs-accordion-inner-border-radius: calc(var(--isisa-radius-md) - 1px);
+    --bs-accordion-btn-color: var(--isisa-text-main);
+    --bs-accordion-btn-bg: var(--isisa-surface);
+    --bs-accordion-active-color: var(--isisa-primary);
+    --bs-accordion-active-bg: var(--isisa-primary-soft);
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem rgba(106, 153, 78, 0.25);
+    --bs-accordion-btn-icon-width: 1rem;
+    --bs-accordion-btn-padding-y: 0.85rem;
+    --bs-accordion-body-padding-y: 1rem;
+    --bs-accordion-bg: var(--isisa-surface);
+    font-size: 0.875rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.accordion-isisa .accordion-item {
+    border: 1px solid var(--isisa-border);
+    border-radius: var(--isisa-radius-md) !important;
+    overflow: hidden;
+}
+
+.accordion-isisa .accordion-button {
+    font-weight: 500;
+    gap: 0.6rem;
+    box-shadow: none;
+}
+
+.accordion-isisa .accordion-button:not(.collapsed) {
+    font-weight: 600;
+    box-shadow: inset 0 -1px 0 var(--isisa-border);
+}
+
+.accordion-isisa .accordion-button:focus-visible {
+    box-shadow: 0 0 0 0.2rem rgba(106, 153, 78, 0.25);
+}
+
+/* Anak panah accordion berwarna hijau tema */
+.accordion-isisa .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%235c6b5e'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-isisa .accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23386641'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-isisa .acc-icon {
+    color: var(--isisa-primary);
+    font-size: 1.05rem;
+}
+
+.accordion-isisa .accordion-body {
+    color: var(--isisa-text-muted);
+    line-height: 1.6;
+}

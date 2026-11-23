@@ -1,0 +1,24 @@
+/* ==========================================================================
+   COMPONENT - Butang tindakan jadual
+   ========================================================================== */
+.btn-action {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 10px;
+    border: 1px solid var(--isisa-border);
+    background-color: var(--isisa-surface);
+    color: var(--isisa-text-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all var(--isisa-transition);
+}
+
+.btn-action:hover {
+    background-color: var(--isisa-secondary-soft);
+    border-color: #cfd9cc;
+    color: var(--isisa-primary);
+}

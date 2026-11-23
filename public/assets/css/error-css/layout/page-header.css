@@ -1,0 +1,43 @@
+/* ==========================================================================
+   LAYOUT - Header atas kiri (identiti MBSA & ISISA)
+   ========================================================================== */
+.page-header {
+    width: 100%;
+    padding: 1.75rem 2rem;
+}
+
+.brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.brand-link:focus-visible {
+    outline: none;
+    box-shadow: var(--isisa-focus-ring);
+    border-radius: 10px;
+}
+
+.brand-logo {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.system-title {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--isisa-primary);
+    line-height: 1.15;
+    margin-bottom: 0.15rem;
+}
+
+.system-subtitle {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--isisa-text-muted);
+    line-height: 1.35;
+}

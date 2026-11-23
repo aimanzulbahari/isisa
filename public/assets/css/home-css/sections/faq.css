@@ -1,0 +1,51 @@
+/* ==========================================================================
+   SECTION - Soalan lazim
+   ========================================================================== */
+/* ---------- Soalan lazim ---------- */
+.faq {
+    --bs-accordion-bg: transparent;
+    --bs-accordion-border-color: var(--line);
+    --bs-accordion-btn-focus-box-shadow: none;
+    --bs-accordion-active-bg: transparent;
+    --bs-accordion-active-color: var(--heading);
+    --bs-accordion-btn-color: var(--heading);
+    --bs-accordion-btn-padding-x: 0;
+    --bs-accordion-body-padding-x: 0;
+    --bs-accordion-border-radius: 0;
+    --bs-accordion-inner-border-radius: 0;
+}
+
+.faq .accordion-item {
+    border-left: 0;
+    border-right: 0;
+}
+
+.faq .accordion-button {
+    font-weight: 700;
+    padding-top: 1.15rem;
+    padding-bottom: 1.15rem;
+    box-shadow: none;
+}
+
+.faq .accordion-button:not(.collapsed) {
+    box-shadow: none;
+}
+
+.faq .accordion-button:focus-visible {
+    outline: 2px solid var(--lime-hi);
+    outline-offset: 2px;
+}
+
+.faq .accordion-body {
+    color: var(--muted);
+    padding-top: 0;
+    padding-bottom: 1.25rem;
+    max-width: 62ch;
+}
+
+.faq .accordion-header {
+    margin: 0;
+    font-size: 1rem;
+    letter-spacing: 0;
+    line-height: inherit;
+}

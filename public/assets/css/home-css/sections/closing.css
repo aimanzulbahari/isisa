@@ -1,0 +1,41 @@
+/* ==========================================================================
+   SECTION - Penutup (permukaan gelap)
+   ========================================================================== */
+/* ---------- Penutup (permukaan gelap) ---------- */
+.closing {
+    background: var(--navy);
+    border-top: 0;
+}
+
+.benefits {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.benefits li {
+    display: flex;
+    gap: 1rem;
+    padding: 1.15rem 0;
+    border-top: 1px solid var(--line);
+}
+
+.benefits li:last-child {
+    border-bottom: 1px solid var(--line);
+}
+
+.benefits i {
+    flex: none;
+    font-size: 1.3rem;
+    color: var(--lime-hi);
+}
+
+.benefits strong {
+    display: block;
+    color: var(--heading);
+}
+
+.benefits span {
+    color: var(--muted);
+    font-size: .95rem;
+}

@@ -1,0 +1,25 @@
+/* ==========================================================================
+   LAYOUT - Corak & cahaya latar halus
+   ========================================================================== */
+/* Corak Latar Halus Bertemakan Kelestarian (CSS Sahaja) */
+.bg-subtle-pattern {
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(rgba(56, 102, 65, 0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bg-soft-glow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 540px;
+    height: 540px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(106, 153, 78, 0.08) 0%, rgba(250, 251, 249, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+}

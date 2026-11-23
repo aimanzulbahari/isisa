@@ -1,0 +1,32 @@
+/* ==========================================================================
+   COMPONENT - Toastr ikut tema
+   ========================================================================== */
+/* Toastr ikut tema */
+#toast-container>div {
+    border-radius: var(--isisa-radius-md);
+    box-shadow: 0 10px 30px rgba(27, 38, 29, 0.18);
+    opacity: 1;
+    padding: 14px 16px 14px 50px;
+    font-family: var(--bs-body-font-family);
+    font-size: 0.875rem;
+}
+
+#toast-container>.toast-success {
+    background-color: #386641;
+}
+
+#toast-container>.toast-info {
+    background-color: #2f7eb5;
+}
+
+#toast-container>.toast-warning {
+    background-color: #d4881f;
+}
+
+#toast-container>.toast-error {
+    background-color: #c93b3b;
+}
+
+.toast-title {
+    font-weight: 600;
+}

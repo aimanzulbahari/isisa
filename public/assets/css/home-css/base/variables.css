@@ -1,0 +1,52 @@
+/* ==========================================================================
+   BASE - Token warna, bayang & ukuran (tema terang formal)
+   ========================================================================== */
+/* ---------- Token (tema terang formal) ---------- */
+:root {
+    --bg: #ffffff;
+    --bg-alt: #f3f6fa;
+    --surface: #ffffff;
+    --line: #dce3ec;
+    --text: #1c2b3d;
+    --muted: #556577;
+    --heading: #0b2540;
+    --navy: #0b2a4a;
+    --navy-2: #08203a;
+
+    /* Hijau: --lime untuk grafik, --lime-hi untuk teks dan ikon (kontras lebih tinggi) */
+    --lime: #5a9a1c;
+    --lime-hi: #3c7a0e;
+    --btn-bg: #3c7a0e;
+    --btn-bg-hi: #336a0b;
+    --btn-fg: #ffffff;
+
+    --sky: #1f7fd1;
+    --amber: #e8960c;
+    --amber-text: #995a00;
+    --gold: #8a5d00;
+    --violet: #7a6af0;
+    --grey: #7d8b9c;
+    --forest: #1f9463;
+    --rose: #d1343b;
+
+    --bs-body-font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --bs-body-bg: var(--bg);
+    --bs-body-color: var(--text);
+    --bs-body-line-height: 1.65;
+}
+
+/* Permukaan gelap (penutup dan footer): semua warna diwarisi daripada token ini */
+.on-dark {
+    --bg: var(--navy);
+    --text: #e3ebf4;
+    --muted: #a9b9cb;
+    --heading: #ffffff;
+    --line: rgba(169, 185, 203, .22);
+    --lime: #7ab82e;
+    --lime-hi: #93cf45;
+    --sky: #5db4f5;
+    --btn-bg: #7ab82e;
+    --btn-bg-hi: #93cf45;
+    --btn-fg: #06140a;
+    color: var(--text);
+}

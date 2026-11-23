@@ -1,0 +1,15 @@
+/* ==========================================================================
+   SECTION - Pengguna (dua lajur)
+   ========================================================================== */
+/* ---------- Pengguna (dua lajur) ---------- */
+@media (min-width: 992px) {
+    .rows-2 {
+        columns: 2;
+        column-gap: 3rem;
+    }
+}
+
+.rows-2>li {
+    break-inside: avoid;
+    border-top: 1px solid var(--line);
+}

@@ -1,0 +1,297 @@
+/* ==========================================================================
+   COMPONENTS - Checkbox & Radio rekaan khas (ISISA)
+   Penggunaan:
+     <label class="isisa-check">
+       <input type="checkbox" name="..." id="...">
+       <span class="isisa-check-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5.5 12.5l4.2 4.2L18.5 8"/></svg></span>
+       <span class="isisa-check-label">Teks</span>
+     </label>
+
+     <label class="isisa-radio">
+       <input type="radio" name="..." id="...">
+       <span class="isisa-radio-dot" aria-hidden="true"></span>
+       <span class="isisa-check-label">Teks</span>
+     </label>
+   Input asal kekal dalam DOM (boleh difokus, disahkan & dihantar bersama borang);
+   hanya visualnya diganti.
+   ========================================================================== */
+
+.isisa-check,
+.isisa-radio {
+    --ctl-size: 22px;
+    --ctl-border: #b8c4bb;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0.35rem 0;
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--isisa-text-main);
+}
+
+/* Input asal disembunyikan secara visual tetapi kekal boleh diakses */
+.isisa-check > input,
+.isisa-radio > input {
+    position: absolute;
+    width: var(--ctl-size);
+    height: var(--ctl-size);
+    margin: 0;
+    opacity: 0;
+    cursor: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   Kotak semak (checkbox)
+   -------------------------------------------------------------------------- */
+.isisa-check-box {
+    flex-shrink: 0;
+    width: var(--ctl-size);
+    height: var(--ctl-size);
+    border: 2px solid var(--ctl-border);
+    border-radius: 7px;
+    background-color: var(--isisa-surface);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--isisa-transition),
+                border-color var(--isisa-transition),
+                box-shadow var(--isisa-transition),
+                transform var(--isisa-transition);
+}
+
+.isisa-check-box svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 3.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 26;
+    stroke-dashoffset: 26;
+    transition: stroke-dashoffset 220ms ease 40ms;
+}
+
+.isisa-check:hover > input:not(:disabled) + .isisa-check-box {
+    border-color: var(--isisa-primary);
+    background-color: var(--isisa-primary-soft);
+}
+
+.isisa-check > input:checked + .isisa-check-box {
+    background-color: var(--isisa-primary);
+    border-color: var(--isisa-primary);
+    box-shadow: 0 3px 8px rgba(56, 102, 65, 0.28);
+}
+
+.isisa-check > input:checked + .isisa-check-box svg {
+    stroke-dashoffset: 0;
+}
+
+.isisa-check > input:active:not(:disabled) + .isisa-check-box {
+    transform: scale(0.9);
+}
+
+/* Keadaan separa (indeterminate) - contoh: "Pilih semua" */
+.isisa-check > input:indeterminate + .isisa-check-box {
+    background-color: var(--isisa-primary);
+    border-color: var(--isisa-primary);
+}
+
+.isisa-check > input:indeterminate + .isisa-check-box::after {
+    content: "";
+    width: 10px;
+    height: 2.5px;
+    border-radius: 2px;
+    background-color: #ffffff;
+}
+
+.isisa-check > input:indeterminate + .isisa-check-box svg {
+    display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Butang radio
+   -------------------------------------------------------------------------- */
+.isisa-radio-dot {
+    flex-shrink: 0;
+    position: relative;
+    width: var(--ctl-size);
+    height: var(--ctl-size);
+    border: 2px solid var(--ctl-border);
+    border-radius: 50%;
+    background-color: var(--isisa-surface);
+    transition: border-color var(--isisa-transition),
+                background-color var(--isisa-transition),
+                box-shadow var(--isisa-transition),
+                transform var(--isisa-transition);
+}
+
+.isisa-radio-dot::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background-color: var(--isisa-primary);
+    transform: scale(0);
+    transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.isisa-radio:hover > input:not(:disabled) + .isisa-radio-dot {
+    border-color: var(--isisa-primary);
+    background-color: var(--isisa-primary-soft);
+}
+
+.isisa-radio > input:checked + .isisa-radio-dot {
+    border-color: var(--isisa-primary);
+    background-color: var(--isisa-primary-soft);
+}
+
+.isisa-radio > input:checked + .isisa-radio-dot::after {
+    transform: scale(1);
+}
+
+.isisa-radio > input:active:not(:disabled) + .isisa-radio-dot {
+    transform: scale(0.9);
+}
+
+/* --------------------------------------------------------------------------
+   Fokus papan kekunci (aksesibiliti)
+   -------------------------------------------------------------------------- */
+.isisa-check > input:focus-visible + .isisa-check-box,
+.isisa-radio > input:focus-visible + .isisa-radio-dot {
+    box-shadow: 0 0 0 0.22rem rgba(106, 153, 78, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   Dilumpuhkan
+   -------------------------------------------------------------------------- */
+.isisa-check > input:disabled ~ *,
+.isisa-radio > input:disabled ~ * {
+    opacity: 0.5;
+}
+
+.isisa-check:has(> input:disabled),
+.isisa-radio:has(> input:disabled) {
+    cursor: not-allowed;
+}
+
+.isisa-check > input:disabled:checked + .isisa-check-box {
+    box-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+   Ralat (selepas borang disahkan)
+   -------------------------------------------------------------------------- */
+.was-validated .isisa-check > input:invalid + .isisa-check-box,
+.was-validated .isisa-radio > input:invalid + .isisa-radio-dot {
+    border-color: #c93b3b;
+}
+
+/* Kumpulan menegak / mendatar */
+.isisa-choice-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.isisa-choice-group.is-inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .isisa-check-box,
+    .isisa-check-box svg,
+    .isisa-radio-dot,
+    .isisa-radio-dot::after {
+        transition: none !important;
+    }
+}
+
+/* ==========================================================================
+   VARIAN KOTAK (tile): setiap pilihan dalam kotak berborang, disusun sebaris
+   Penggunaan: tambah kelas "is-tile" pada .isisa-check / .isisa-radio,
+   dan bungkus dalam <div class="isisa-choice-row" style="--cols: 4">.
+   ========================================================================== */
+.isisa-choice-row {
+    --cols: 4;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+}
+
+@media (min-width: 768px) {
+    .isisa-choice-row {
+        grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+    }
+}
+
+.isisa-check.is-tile,
+.isisa-radio.is-tile {
+    display: flex;
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--isisa-border);
+    border-radius: 10px;
+    background-color: var(--isisa-surface);
+    transition: border-color var(--isisa-transition),
+                background-color var(--isisa-transition),
+                box-shadow var(--isisa-transition);
+}
+
+.isisa-check.is-tile:hover:not(:has(> input:disabled)),
+.isisa-radio.is-tile:hover:not(:has(> input:disabled)) {
+    border-color: #b8c4bb;
+    background-color: var(--isisa-secondary-soft);
+}
+
+.isisa-check.is-tile:has(> input:checked),
+.isisa-radio.is-tile:has(> input:checked) {
+    border-color: var(--isisa-primary);
+    background-color: var(--isisa-primary-soft);
+}
+
+.isisa-check.is-tile:has(> input:focus-visible),
+.isisa-radio.is-tile:has(> input:focus-visible) {
+    box-shadow: 0 0 0 0.22rem rgba(106, 153, 78, 0.3);
+}
+
+.isisa-check.is-tile:has(> input:disabled),
+.isisa-radio.is-tile:has(> input:disabled) {
+    background-color: #f1f4f0;
+}
+
+/* Elak cincin fokus berganda pada kotak dalam */
+.isisa-check.is-tile > input:focus-visible + .isisa-check-box,
+.isisa-radio.is-tile > input:focus-visible + .isisa-radio-dot {
+    box-shadow: none;
+}
+
+/* Input dibentang di atas seluruh kotak supaya seluruh kotak boleh diklik */
+.isisa-check.is-tile > input,
+.isisa-radio.is-tile > input {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.isisa-check.is-tile > input:checked + .isisa-check-box {
+    box-shadow: none;
+}
+
+.isisa-choice-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.55rem;
+    color: var(--isisa-text-main);
+}
+
+.isisa-choice-title .req {
+    color: #c93b3b;
+    margin-left: 0.15rem;
+}

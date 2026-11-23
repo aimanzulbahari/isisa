@@ -1,0 +1,31 @@
+/* ==========================================================================
+   COMPONENT - Butang
+   ========================================================================== */
+/* ---------- Butang ---------- */
+.btn-isisa {
+    --bs-btn-color: var(--btn-fg);
+    --bs-btn-bg: var(--btn-bg);
+    --bs-btn-border-color: var(--btn-bg);
+    --bs-btn-hover-color: var(--btn-fg);
+    --bs-btn-hover-bg: var(--btn-bg-hi);
+    --bs-btn-hover-border-color: var(--btn-bg-hi);
+    --bs-btn-active-color: var(--btn-fg);
+    --bs-btn-active-bg: var(--btn-bg-hi);
+    --bs-btn-active-border-color: var(--btn-bg-hi);
+    font-weight: 700;
+    padding: .7rem 1.3rem;
+}
+
+.btn-ghost {
+    --bs-btn-color: var(--heading);
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: rgba(11, 37, 64, .28);
+    --bs-btn-hover-color: var(--heading);
+    --bs-btn-hover-bg: rgba(11, 37, 64, .06);
+    --bs-btn-hover-border-color: rgba(11, 37, 64, .5);
+    --bs-btn-active-color: var(--heading);
+    --bs-btn-active-bg: rgba(11, 37, 64, .1);
+    --bs-btn-active-border-color: rgba(11, 37, 64, .5);
+    font-weight: 700;
+    padding: .7rem 1.3rem;
+}

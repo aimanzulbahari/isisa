@@ -1,0 +1,64 @@
+/* ==========================================================================
+   COMPONENT - Ikon, lencana status, kod & teks ralat
+   ========================================================================== */
+/* Lencana Ikon & Paparan Kod 404 */
+.error-visual-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.error-icon-box {
+    width: 76px;
+    height: 76px;
+    border-radius: var(--isisa-radius-lg);
+    background: linear-gradient(135deg, var(--isisa-primary) 0%, var(--isisa-secondary) 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.1rem;
+    box-shadow: 0 14px 28px -6px rgba(56, 102, 65, 0.3);
+}
+
+.error-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background-color: var(--isisa-tint-soft);
+    border: 1px solid #cfe0d2;
+    color: var(--isisa-primary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.error-code {
+    font-size: clamp(4.25rem, 10vw, 5.75rem);
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--isisa-primary) 20%, var(--isisa-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.75rem;
+}
+
+.error-heading {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--isisa-text-main);
+    margin-bottom: 0.75rem;
+}
+
+.error-description {
+    font-size: 0.96rem;
+    font-weight: 400;
+    color: var(--isisa-text-muted);
+    line-height: 1.65;
+    max-width: 440px;
+    margin: 0 auto 2rem;
+}

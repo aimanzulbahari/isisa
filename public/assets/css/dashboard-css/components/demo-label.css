@@ -1,0 +1,11 @@
+/* ==========================================================================
+   COMPONENT - Label demo
+   ========================================================================== */
+.demo-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--isisa-text-muted);
+    margin-bottom: 0.6rem;
+}

@@ -1,0 +1,51 @@
+/* ==========================================================================
+   COMPONENT - Pautan pantas
+   ========================================================================== */
+/* Pautan Pantas */
+.quick-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid var(--isisa-border);
+    border-radius: var(--isisa-radius-md);
+    color: var(--isisa-text-main);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--isisa-transition);
+}
+
+.quick-link-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background-color: var(--isisa-primary-soft);
+    color: var(--isisa-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+}
+
+.quick-link-text {
+    flex: 1;
+}
+
+.quick-link-arrow {
+    font-size: 0.75rem;
+    color: var(--isisa-text-muted);
+    transition: transform var(--isisa-transition), color var(--isisa-transition);
+}
+
+.quick-link:hover {
+    background-color: var(--isisa-secondary-soft);
+    border-color: #cfd9cc;
+    color: var(--isisa-primary);
+}
+
+.quick-link:hover .quick-link-arrow {
+    color: var(--isisa-primary);
+    transform: translateX(3px);
+}

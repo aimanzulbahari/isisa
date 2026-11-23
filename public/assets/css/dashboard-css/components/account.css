@@ -1,0 +1,37 @@
+/* ==========================================================================
+   COMPONENT - Halaman Akaun Saya (pautan ikut gaya Pautan Pantas)
+   Gaya asas (.quick-link) datang daripada components/quick-links.css;
+   di sini hanya pelarasan untuk butang tab dan keadaan aktif.
+   ========================================================================== */
+.account-link {
+    width: 100%;
+    text-align: left;
+    background-color: var(--isisa-surface);
+    cursor: pointer;
+}
+
+.account-link:hover {
+    background-color: var(--isisa-secondary-soft);
+}
+
+/* Pautan aktif: hijau lembut dengan border hijau, ikon pepejal */
+.account-link.active {
+    background-color: var(--isisa-primary-soft);
+    border-color: var(--isisa-primary);
+    color: var(--isisa-primary);
+    font-weight: 600;
+}
+
+.account-link.active .quick-link-icon {
+    background-color: var(--isisa-primary);
+    color: #ffffff;
+}
+
+.account-link.active .quick-link-arrow {
+    color: var(--isisa-primary);
+}
+
+.account-link:focus-visible {
+    outline: 2px solid var(--isisa-secondary);
+    outline-offset: 2px;
+}

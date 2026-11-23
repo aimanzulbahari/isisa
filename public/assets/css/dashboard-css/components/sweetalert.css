@@ -1,0 +1,72 @@
+/* ==========================================================================
+   COMPONENT - SweetAlert2 ikut tema
+   ========================================================================== */
+/* SweetAlert2 ikut tema */
+.swal2-popup.swal-isisa {
+    font-family: var(--bs-body-font-family);
+    border-radius: var(--isisa-radius-lg);
+    padding: 1.75rem 1.5rem 1.5rem;
+    width: 26em;
+}
+
+.swal2-popup.swal-isisa .swal2-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--isisa-text-main);
+    letter-spacing: -0.01em;
+}
+
+.swal2-popup.swal-isisa .swal2-html-container {
+    font-size: 0.9rem;
+    color: var(--isisa-text-muted);
+}
+
+.swal2-popup.swal-isisa .swal2-actions {
+    gap: 0.5rem;
+}
+
+.swal2-popup.swal-isisa .swal-btn {
+    height: 38px;
+    min-width: 92px;
+    padding: 0 1.1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0;
+    box-shadow: none;
+}
+
+.swal2-popup.swal-isisa .swal-btn-confirm {
+    background-color: var(--isisa-primary);
+    border: 1px solid var(--isisa-primary);
+    color: #fff;
+}
+
+.swal2-popup.swal-isisa .swal-btn-confirm:hover {
+    background-color: var(--isisa-primary-hover);
+}
+
+.swal2-popup.swal-isisa .swal-btn-confirm.swal-danger {
+    background-color: #c93b3b;
+    border-color: #c93b3b;
+}
+
+.swal2-popup.swal-isisa .swal-btn-confirm.swal-danger:hover {
+    background-color: #a83030;
+}
+
+.swal2-popup.swal-isisa .swal-btn-cancel {
+    background-color: var(--isisa-surface);
+    border: 1px solid var(--isisa-border);
+    color: var(--isisa-text-main);
+}
+
+.swal2-popup.swal-isisa .swal-btn-cancel:hover {
+    background-color: var(--isisa-secondary-soft);
+    color: var(--isisa-primary);
+}
+
+.swal2-popup.swal-isisa .swal2-actions .swal2-confirm:focus-visible,
+.swal2-popup.swal-isisa .swal2-actions .swal2-cancel:focus-visible {
+    box-shadow: 0 0 0 0.2rem rgba(106, 153, 78, 0.35);
+}

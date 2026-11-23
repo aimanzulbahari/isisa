@@ -1,0 +1,61 @@
+/* ==========================================================================
+   SECTION - Kad suapan berita Facebook (Facebook Page Plugin)
+   Tajuk lajur dikongsi dengan sections/programs.css (.feed-head)
+   ========================================================================== */
+.fb-card {
+    overflow: hidden;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    box-shadow: 0 10px 26px -16px rgba(11, 37, 64, .3);
+}
+
+.fb-frame {
+    display: flex;
+    justify-content: center;
+    min-height: 600px;
+}
+
+.fb-frame iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 600px;
+    border: 0;
+}
+
+.fb-placeholder {
+    align-self: center;
+    margin: 0;
+    padding: 1rem;
+    color: var(--muted);
+    font-size: .9rem;
+    text-align: center;
+}
+
+.fb-placeholder i {
+    display: block;
+    margin-bottom: .5rem;
+    color: var(--sky);
+    font-size: 2rem;
+}
+
+.fb-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    padding: .7rem 1rem;
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    color: var(--lime-hi);
+    font-size: .85rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.fb-link:hover,
+.fb-link:focus-visible {
+    background: var(--bg-alt);
+    color: var(--heading);
+}

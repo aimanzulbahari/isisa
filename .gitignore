@@ -1,0 +1,26 @@
+# Dependencies (dipasang semula melalui `npm install` / `composer install`)
+/node_modules/
+/vendor/
+
+# Persekitaran & kelayakan (jangan commit; guna .env.example sebagai templat)
+.env
+.env.*
+!.env.example
+
+# Storan jalan masa (kekalkan README.md sahaja)
+/storage/backups/*
+/storage/logs/*
+/storage/temp/*
+/storage/uploads/*
+
+# Log & fail sementara
+*.log
+npm-debug.log*
+
+# Fail editor / OS
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+.DS_Store
+desktop.ini

@@ -1,0 +1,25 @@
+/* ==========================================================================
+   UTILITY - Pelarasan mobile
+   ========================================================================== */
+/* Pelarasan Mobile */
+@media (max-width: 575.98px) {
+    .page-header {
+        padding: 1.25rem 1.25rem;
+    }
+
+    .brand-logo {
+        height: 42px;
+    }
+
+    .system-title {
+        font-size: 1.3rem;
+    }
+
+    .system-subtitle {
+        font-size: 0.75rem;
+    }
+
+    .action-group .btn {
+        width: 100%;
+    }
+}

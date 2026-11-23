@@ -1,0 +1,55 @@
+# ==========================================================
+# ISISA - Apache settings
+# NOTE: the paths below start with /isisa because the project runs in
+# http://localhost/isisa. Change it if the project folder name changes.
+# ==========================================================
+
+# --- Show our own error pages (src/pages) ---
+# Only two pages: 400.php shows every 4xx error (400, 401, 403, 404...),
+# and 500.php shows every 5xx error (500, 503...).
+# Apache uses these when IT finds the problem (missing file, blocked file...).
+# Errors found by PHP are shown by respondError() in core/includes/error-handlers.php.
+ErrorDocument 400 /isisa/src/pages/400.php
+ErrorDocument 401 /isisa/src/pages/400.php
+ErrorDocument 403 /isisa/src/pages/400.php
+ErrorDocument 404 /isisa/src/pages/400.php
+ErrorDocument 500 /isisa/src/pages/500.php
+ErrorDocument 503 /isisa/src/pages/500.php
+
+# --- Protect private files ---
+# Nobody should be able to download .env (it has passwords) or similar files.
+<FilesMatch "^\.(?!htaccess$)|^composer\.(json|lock)$|^package(-lock)?\.json$|\.sql$">
+    Require all denied
+</FilesMatch>
+
+# Private folders: only PHP code may use them, never a browser.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(core|database|storage|vendor|node_modules)(/|$) - [F,L]
+
+    # The module pages (MyModules) may only be opened through the router (routes/web.php),
+    # because the router is where the login check (guard) happens. Typing the file path
+    # in the browser would skip that check, so it is blocked.
+    RewriteRule ^MyModules(/|$) - [F,L,NC]
+
+    # Clean URLs: anything that is not a real file or folder goes to index.php,
+    # which runs the page listed in routes/web.php (e.g. /Login, /Forgot-Password).
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Our own CSS and JS (public/assets): the browser must check for a newer copy every time.
+# Why: main.css and main.js load other files with @import / import. Those files have no
+# "?v=" in their URL, so the browser kept showing OLD versions after an edit.
+# "no-cache" does not stop caching: the browser asks the server first and gets a tiny
+# "304 Not Modified" answer when nothing changed, so it stays fast.
+<IfModule mod_rewrite.c>
+    RewriteRule ^public/assets/(css|js)/ - [E=ISISA_REVALIDATE:1]
+</IfModule>
+<IfModule mod_headers.c>
+    Header set Cache-Control "no-cache" env=ISISA_REVALIDATE
+</IfModule>
+
+# Do not list the files inside a folder
+Options -Indexes

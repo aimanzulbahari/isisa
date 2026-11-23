@@ -1,0 +1,35 @@
+/* ==========================================================================
+   COMPONENT - Senarai bergaris
+   ========================================================================== */
+/* ---------- Baris (senarai bergaris) ---------- */
+.rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.rows>li {
+    display: flex;
+    gap: 1rem;
+    padding: 1.15rem 0;
+    border-top: 1px solid var(--line);
+}
+
+.rows>li:last-child {
+    border-bottom: 1px solid var(--line);
+}
+
+.rows i {
+    flex: none;
+    font-size: 1.25rem;
+    color: var(--lime-hi);
+    margin-top: .1rem;
+}
+
+.rows p {
+    margin: 0;
+}
+
+.rows strong {
+    color: var(--heading);
+}

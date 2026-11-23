@@ -1,0 +1,21 @@
+/* ==========================================================================
+   BASE - Tipografi & asas halaman
+   ========================================================================== */
+body {
+    font-family: var(--bs-body-font-family);
+    background-color: var(--isisa-bg-page);
+    color: var(--isisa-text-main);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+.system-title,
+.error-code {
+    letter-spacing: -0.025em;
+}

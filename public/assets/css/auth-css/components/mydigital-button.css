@@ -1,0 +1,63 @@
+/* ==========================================================================
+   COMPONENT - Butang MyDigital ID & ribbon "Akan Datang"
+   ========================================================================== */
+/* Pembungkus Butang MyDigital ID & Ribbon */
+.mydigital-wrapper {
+    position: relative;
+}
+
+.btn-mydigital {
+    height: 48px;
+    width: 100%;
+    background-color: var(--isisa-surface);
+    border: 1px solid var(--isisa-border);
+    color: var(--isisa-text-main);
+    font-weight: 600;
+    font-size: 0.915rem;
+    border-radius: var(--isisa-radius-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0 1rem;
+    box-shadow: 0 2px 6px rgba(24, 34, 27, 0.03);
+    /* Keadaan belum aktif (aria-disabled="true") */
+    opacity: 0.78;
+    cursor: not-allowed;
+    user-select: none;
+}
+
+.btn-mydigital:hover,
+.btn-mydigital:focus {
+    background-color: var(--isisa-surface);
+    border-color: var(--isisa-border);
+    color: var(--isisa-text-main);
+    box-shadow: 0 2px 6px rgba(24, 34, 27, 0.03);
+}
+
+/* Logo MyDigital ID: kekal nisbah & warna asal */
+.mydigital-logo {
+    height: 22px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* Ribbon/Badge "Akan Datang" di penjuru kanan atas */
+.ribbon-coming-soon {
+    position: absolute;
+    top: -10px;
+    right: 12px;
+    background-color: var(--isisa-ribbon-bg);
+    border: 1px solid var(--isisa-ribbon-border);
+    color: var(--isisa-ribbon-text);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    padding: 4px 9px;
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(56, 102, 65, 0.1);
+    pointer-events: none;
+    z-index: 5;
+}

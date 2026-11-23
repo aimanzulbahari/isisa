@@ -1,0 +1,73 @@
+/* ==========================================================================
+   LAYOUT - Bar navigasi
+   ========================================================================== */
+/* ---------- Navigasi ---------- */
+.navbar.site-nav {
+    --bs-navbar-color: var(--muted);
+    --bs-navbar-hover-color: var(--heading);
+    --bs-navbar-active-color: var(--heading);
+    background: rgba(255, 255, 255, .92);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    text-decoration: none;
+    color: var(--heading);
+}
+
+.brand:hover {
+    color: var(--heading);
+}
+
+.brand-mark {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(90, 154, 28, .12);
+    color: var(--lime-hi);
+    border: 1px solid rgba(90, 154, 28, .5);
+}
+
+.brand-name {
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: -.02em;
+    line-height: 1;
+}
+
+.brand-sub {
+    display: none;
+    font-size: .72rem;
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+@media (min-width: 576px) {
+    .brand-sub {
+        display: block;
+    }
+}
+
+.navbar.site-nav .nav-link {
+    font-weight: 600;
+    font-size: .92rem;
+    padding: .85rem .8rem;
+}
+
+.navbar.site-nav .nav-link.active {
+    box-shadow: inset 0 -2px 0 var(--lime);
+}
+
+@media (max-width: 991.98px) {
+    .navbar.site-nav .nav-link.active {
+        box-shadow: inset 3px 0 0 var(--lime);
+    }
+}

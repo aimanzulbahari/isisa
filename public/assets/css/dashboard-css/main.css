@@ -1,0 +1,40 @@
+/* ==========================================================================
+   DASHBOARD CSS - Panel Pentadbiran (ISISA)
+   Fail indeks: mengimport semua modul mengikut susunan cascade asal.
+   Susunan import MESTI dikekalkan.
+   ========================================================================== */
+@import url("base/variables.css");
+@import url("base/bootstrap-overrides.css");
+@import url("layout/page-layout.css");
+@import url("layout/sidebar.css");
+@import url("base/scrollbar.css");
+@import url("layout/sidebar-nav.css");
+@import url("layout/header.css");
+@import url("components/notifications.css");
+@import url("components/timeline.css");
+@import url("components/back-to-top.css");
+@import url("components/sweetalert.css");
+@import url("components/theme-menu.css");
+@import url("components/breadcrumbs.css");
+@import url("components/page-tabs.css");
+@import url("components/welcome-banner.css");
+@import url("components/cards.css");
+@import url("components/data-table.css");
+@import url("utilities/order.css");
+@import url("components/quick-links.css");
+@import url("components/pagination.css");
+@import url("components/action-button.css");
+@import url("components/badges.css");
+@import url("components/demo-label.css");
+@import url("components/forms.css");
+@import url("components/custom-controls.css");
+@import url("components/system-info.css");
+@import url("components/account.css");
+@import url("components/select2.css");
+@import url("components/accordion.css");
+@import url("components/alerts.css");
+@import url("components/toastr.css");
+@import url("components/markdown.css");
+@import url("components/buttons.css");
+@import url("layout/footer.css");
+@import url("utilities/animations.css");

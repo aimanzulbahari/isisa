@@ -1,0 +1,10 @@
+{
+    "require": {
+        "mpdf/mpdf": "^8.3",
+        "phpmailer/phpmailer": "^7.2",
+        "guzzlehttp/guzzle": "^8.3",
+        "vlucas/phpdotenv": "^5.8",
+        "phpoffice/phpspreadsheet": "^5.11",
+        "erusev/parsedown": "^1.7"
+    }
+}

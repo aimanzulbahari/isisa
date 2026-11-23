@@ -1,0 +1,78 @@
+/* ==========================================================================
+   SECTION - Aliran pengesahan
+   ========================================================================== */
+/* ---------- Aliran pengesahan ---------- */
+.flow {
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.flow li {
+    position: relative;
+    padding-left: 3.6rem;
+}
+
+.flow .dot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    border: 2px solid var(--c);
+    color: var(--c);
+    background: var(--surface);
+}
+
+.flow li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 1.25rem;
+    top: 2.6rem;
+    bottom: -1.5rem;
+    width: 2px;
+    background: var(--line);
+}
+
+.flow h3 {
+    font-size: 1.05rem;
+    margin: 0 0 .2rem;
+    letter-spacing: -.01em;
+}
+
+.flow p {
+    margin: 0;
+    color: var(--muted);
+    font-size: .94rem;
+}
+
+@media (min-width: 992px) {
+    .flow {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1.25rem;
+    }
+
+    .flow li {
+        padding: 3.5rem 0 0;
+    }
+
+    .flow li:not(:last-child)::after {
+        left: 2.6rem;
+        right: -1.25rem;
+        top: 1.25rem;
+        bottom: auto;
+        width: auto;
+        height: 2px;
+    }
+}
+
+@media (min-width: 992px) {
+    .flow.flow-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

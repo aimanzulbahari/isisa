@@ -1,0 +1,40 @@
+/* ==========================================================================
+   COMPONENT - Alerts ikut tema
+   ========================================================================== */
+/* Alerts ikut tema */
+.alert {
+    --bs-alert-border-radius: var(--isisa-radius-md);
+    --bs-alert-padding-y: 0.85rem;
+    --bs-alert-padding-x: 1rem;
+    font-size: 0.875rem;
+}
+
+.alert-success {
+    --bs-alert-color: #2b5032;
+    --bs-alert-bg: #eef4ef;
+    --bs-alert-border-color: #cfe0d2;
+}
+
+.alert-info {
+    --bs-alert-color: #1f5f8b;
+    --bs-alert-bg: #eaf3fb;
+    --bs-alert-border-color: #c6dff1;
+}
+
+.alert-warning {
+    --bs-alert-color: #8a5410;
+    --bs-alert-bg: #fef6e7;
+    --bs-alert-border-color: #f6dfb0;
+}
+
+.alert-danger {
+    --bs-alert-color: #912018;
+    --bs-alert-bg: #fef3f2;
+    --bs-alert-border-color: #f6cfcb;
+}
+
+.alert-icon {
+    font-size: 1.1rem;
+    line-height: 1.35;
+    flex-shrink: 0;
+}

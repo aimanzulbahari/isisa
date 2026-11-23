@@ -1,0 +1,183 @@
+/* ==========================================================================
+   COMPONENT - Borang ikut tema
+   ========================================================================== */
+/* Medan input berlatar putih (bukan warna latar halaman #f5f7f4 yang diwarisi daripada Bootstrap),
+   supaya nampak sama dalam kad putih dan dalam popup. Readonly/disabled kekal kelabu lembut. */
+.form-control,
+.form-select {
+    background-color: var(--isisa-surface);
+}
+
+/* Baca sahaja / dilumpuhkan: kelabu lembut supaya jelas tidak boleh diubah */
+.form-control:disabled,
+.form-control[readonly],
+.form-select:disabled {
+    background-color: #f1f4f0;
+}
+
+/* Popup: latar putih seperti kad */
+.modal {
+    --bs-modal-bg: var(--isisa-surface);
+}
+
+/* Borang ikut tema */
+.form-isisa {
+    --bs-border-radius: 8px;
+    --bs-form-valid-color: #386641;
+    --bs-form-valid-border-color: #386641;
+    --bs-form-invalid-color: #c93b3b;
+    --bs-form-invalid-border-color: #c93b3b;
+}
+
+.form-isisa .form-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+}
+
+.form-isisa .form-control,
+.form-isisa .form-select,
+.form-isisa .input-group-text {
+    border-color: var(--isisa-border);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    min-height: 38px;
+}
+
+.form-isisa .form-control:hover:not(:disabled):not([readonly]),
+.form-isisa .form-select:hover:not(:disabled) {
+    border-color: #b8c4bb;
+}
+
+.form-isisa .form-control:focus,
+.form-isisa .form-select:focus {
+    border-color: var(--isisa-primary);
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(56, 102, 65, 0.18);
+}
+
+.form-isisa .form-control:disabled,
+.form-isisa .form-control[readonly],
+.form-isisa .form-select:disabled {
+    background-color: #f1f4f0;
+    color: var(--isisa-text-muted);
+}
+
+.form-isisa .input-group-text {
+    background-color: var(--isisa-primary-soft);
+    color: var(--isisa-primary);
+    font-weight: 600;
+}
+
+.form-isisa .input-group> :not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-isisa .input-group> :not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.form-isisa .form-control-color {
+    width: 100%;
+    padding: 0.3rem;
+}
+
+.form-isisa .form-check-input:checked {
+    background-color: var(--isisa-primary);
+    border-color: var(--isisa-primary);
+}
+
+.form-isisa .form-check-input:focus {
+    border-color: var(--isisa-secondary);
+    box-shadow: 0 0 0 0.2rem rgba(106, 153, 78, 0.25);
+}
+
+.form-isisa .form-check-label {
+    font-size: 0.875rem;
+}
+
+.form-isisa .form-range {
+    accent-color: var(--isisa-primary);
+}
+
+.form-isisa .form-range::-webkit-slider-thumb {
+    background-color: var(--isisa-primary);
+}
+
+.form-isisa .form-range::-moz-range-thumb {
+    background-color: var(--isisa-primary);
+}
+
+.form-isisa .form-range:focus::-webkit-slider-thumb {
+    box-shadow: 0 0 0 0.2rem rgba(106, 153, 78, 0.25);
+}
+
+.form-isisa .form-text {
+    font-size: 0.75rem;
+}
+
+.form-group-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--isisa-primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--isisa-border);
+}
+
+/* Medan kata laluan dengan butang tunjuk/sembunyi (mata).
+   Penggunaan: <div class="password-field"><input class="form-control" ...>
+   <button type="button" class="password-toggle-btn" data-toggle-password="idInput">...</button></div> */
+.password-field {
+    position: relative;
+}
+
+.password-field .form-control {
+    padding-right: 2.75rem;
+}
+
+/* Elak ikon sah/ralat Bootstrap bertindih dengan butang mata */
+.was-validated .password-field .form-control:valid,
+.was-validated .password-field .form-control:invalid,
+.password-field .form-control.is-valid,
+.password-field .form-control.is-invalid {
+    background-image: none;
+    padding-right: 2.75rem;
+}
+
+/* Mesej ralat berada selepas pembungkus (bukan selepas input): paparkan bila input tidak sah */
+.was-validated .password-field:has(.form-control:invalid) ~ .invalid-feedback,
+.password-field:has(.form-control.is-invalid) ~ .invalid-feedback {
+    display: block;
+}
+
+.password-toggle-btn {
+    position: absolute;
+    top: 50%;
+    right: 0.4rem;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--isisa-text-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--isisa-transition), background-color var(--isisa-transition);
+}
+
+.password-toggle-btn:hover {
+    color: var(--isisa-primary);
+    background-color: rgba(56, 102, 65, 0.08);
+}
+
+.password-toggle-btn:focus-visible {
+    outline: 2px solid var(--isisa-secondary);
+    outline-offset: 1px;
+}

@@ -1,0 +1,28 @@
+/* ==========================================================================
+   COMPONENT - Garisan pemisah "atau"
+   ========================================================================== */
+/* Garisan Pemisah "atau" */
+.divider-text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--isisa-text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 1.4rem 0;
+}
+
+.divider-text::before,
+.divider-text::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid var(--isisa-border);
+}
+
+.divider-text::before {
+    margin-right: 0.85rem;
+}
+
+.divider-text::after {
+    margin-left: 0.85rem;
+}

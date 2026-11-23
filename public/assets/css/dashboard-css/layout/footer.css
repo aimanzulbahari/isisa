@@ -1,0 +1,16 @@
+/* ==========================================================================
+   LAYOUT - Footer
+   ========================================================================== */
+.app-footer {
+    border-top: 1px solid var(--isisa-border);
+    background-color: #ffffff;
+    padding: 1.15rem 1.5rem;
+    font-size: 0.8125rem;
+    color: var(--isisa-text-muted);
+}
+
+@media (min-width: 768px) {
+    .app-footer {
+        padding: 1.15rem 2rem;
+    }
+}

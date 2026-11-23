@@ -1,0 +1,23 @@
+/* ==========================================================================
+   COMPONENT - Logo & identiti sistem
+   ========================================================================== */
+.brand-logo {
+    height: 54px;
+    width: auto;
+    object-fit: contain;
+}
+
+.system-title {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--isisa-primary);
+    line-height: 1.2;
+    margin-bottom: 0.2rem;
+}
+
+.system-subtitle {
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--isisa-text-muted);
+    line-height: 1.4;
+}

@@ -1,0 +1,211 @@
+/* ==========================================================================
+   SECTION - Dashboard bercarta
+   ========================================================================== */
+/* ---------- Dashboard bercarta ---------- */
+.dash-note {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    margin: 0;
+    padding: .3rem .8rem;
+    border: 1px solid rgba(138, 93, 0, .4);
+    background: rgba(234, 179, 8, .1);
+    border-radius: 999px;
+    color: var(--gold);
+    font-size: .85rem;
+    font-weight: 600;
+}
+
+.dash-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: .4rem;
+    overflow-x: auto;
+    padding-bottom: .75rem;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid var(--line);
+    scrollbar-width: thin;
+}
+
+.dash-tabs .nav-link {
+    color: var(--muted);
+    font-weight: 700;
+    white-space: nowrap;
+    padding: .6rem 1rem;
+    border: 0;
+    border-radius: .6rem;
+    background: none;
+}
+
+.dash-tabs .nav-link:hover {
+    color: var(--heading);
+    background: rgba(11, 37, 64, .06);
+}
+
+.dash-tabs .nav-link.active {
+    color: #fff;
+    background: var(--navy);
+}
+
+.dash-intro {
+    color: var(--muted);
+    max-width: 64ch;
+    margin: 0 0 1.5rem;
+}
+
+.kpi-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .75rem;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .kpi-row {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.kpi-tile {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: .8rem;
+    padding: .9rem 1rem;
+    box-shadow: 0 1px 2px rgba(11, 37, 64, .05);
+}
+
+.kpi-tile .kpi-v {
+    font-size: 1.6rem;
+}
+
+.cc {
+    height: 100%;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    padding: 1.1rem 1.1rem 1rem;
+    box-shadow: 0 1px 2px rgba(11, 37, 64, .05);
+}
+
+.cc h3 {
+    font-size: 1rem;
+    letter-spacing: -.01em;
+    margin: 0;
+}
+
+.cc>p {
+    margin: .15rem 0 1rem;
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+.cc-body {
+    position: relative;
+    height: 260px;
+    color: var(--muted);
+}
+
+.cc-body.tall {
+    height: 300px;
+}
+
+.kpi-table {
+    --bs-table-bg: transparent;
+    --bs-table-color: var(--text);
+    --bs-table-border-color: var(--line);
+    font-size: .92rem;
+}
+
+.kpi-table thead th {
+    color: var(--muted);
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.kpi-table tbody th {
+    font-weight: 600;
+    color: var(--heading);
+}
+
+.kpi-table td:not(:first-child) {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.kpi-table .num {
+    text-align: right;
+}
+
+.kpi-table .diff th,
+.kpi-table .diff td {
+    color: var(--amber-text);
+}
+
+@media (max-width: 575.98px) {
+    .kpi-table {
+        font-size: .8rem;
+    }
+
+    .kpi-table> :not(caption)>*>* {
+        padding: .5rem .35rem;
+    }
+
+    .kpi-table td:not(:first-child) {
+        white-space: normal;
+    }
+
+    .kpi-table .status {
+        font-size: .78rem;
+        gap: .3rem;
+        align-items: flex-start;
+    }
+
+    .kpi-table .status i {
+        margin-top: .15rem;
+    }
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-weight: 600;
+    font-size: .85rem;
+    color: var(--heading);
+}
+
+.status i {
+    color: var(--c);
+}
+
+.big-n {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--heading);
+    letter-spacing: -.03em;
+    font-variant-numeric: tabular-nums;
+}
+
+.big-n small {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0;
+    margin-left: .4rem;
+}
+
+.progress {
+    height: .6rem;
+    background: rgba(11, 37, 64, .09);
+}
+
+.progress-bar {
+    background: var(--lime);
+}
+
+.dash-foot {
+    margin: 1rem 0 0;
+    color: var(--muted);
+    font-size: .85rem;
+}

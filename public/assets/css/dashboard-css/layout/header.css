@@ -1,0 +1,130 @@
+/* ==========================================================================
+   LAYOUT - Header (top bar, butang, profil, dropdown)
+   ========================================================================== */
+.app-header {
+    position: sticky;
+    top: 0;
+    height: var(--isisa-header-height);
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--isisa-border);
+    z-index: 1020;
+    padding: 0 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+    .app-header {
+        padding: 0 2rem;
+    }
+}
+
+.header-btn {
+    height: 38px;
+    border-radius: var(--isisa-radius-md);
+    border: 1px solid var(--isisa-border);
+    background-color: var(--isisa-surface);
+    color: var(--isisa-text-main);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    transition: all var(--isisa-transition);
+}
+
+.header-btn:hover,
+.header-btn:focus {
+    background-color: var(--isisa-secondary-soft);
+    border-color: #cfd9cc;
+    color: var(--isisa-primary);
+}
+
+/* Butang bahasa: gaya sama seperti profile-trigger (telus, hover hijau lembut) */
+.header-btn.lang-trigger {
+    height: auto;
+    padding: 0.5rem 0.75rem;
+    border-color: transparent;
+    background: transparent;
+}
+
+.header-btn.lang-trigger:hover,
+.header-btn.lang-trigger:focus,
+.header-btn.lang-trigger.show {
+    background-color: var(--isisa-secondary-soft);
+    border-color: var(--isisa-border);
+    color: var(--isisa-text-main);
+}
+
+.profile-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.35rem;
+    border-radius: var(--isisa-radius-md);
+    border: 1px solid transparent;
+    background: transparent;
+    transition: all var(--isisa-transition);
+}
+
+.profile-trigger:hover {
+    background-color: var(--isisa-secondary-soft);
+    border-color: var(--isisa-border);
+}
+
+.avatar-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--isisa-primary-soft);
+    color: var(--isisa-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(56, 102, 65, 0.2);
+}
+
+/* Menu profil: lebar sama dengan butang profil (nama + peranan) di atasnya.
+   Pada skrin kecil butang hanya avatar, jadi min-width di bawah yang menentukan lebar. */
+.dropdown-menu-custom.profile-menu {
+    width: 100%;
+    min-width: 210px;
+}
+
+.dropdown-menu-custom {
+    border: 1px solid var(--isisa-border);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(27, 38, 29, 0.08);
+    padding: 0.5rem;
+    min-width: 210px;
+    margin-top: 0.5rem !important;
+}
+
+.dropdown-menu-custom .dropdown-item {
+    border-radius: 10px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--isisa-text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: background-color var(--isisa-transition);
+}
+
+.dropdown-menu-custom .dropdown-item:hover {
+    background-color: var(--isisa-secondary-soft);
+    color: var(--isisa-primary);
+}
+
+/* Item aktif (bahasa dipilih): hijau lembut, bukan biru lalai Bootstrap */
+.dropdown-menu-custom .dropdown-item.active,
+.dropdown-menu-custom .dropdown-item:active {
+    background-color: var(--isisa-primary-soft);
+    color: var(--isisa-primary);
+    font-weight: 600;
+}

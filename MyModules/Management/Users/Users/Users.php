@@ -1,0 +1,269 @@
+<?php
+
+declare(strict_types=1);
+
+// Start the system (config, session, CSRF, helpers, middleware)
+require_once dirname(__DIR__, 4) . '/core/config/bootstrap.php';
+
+// Library loaders for the third-party fonts, CSS and JS in /public
+require_once PUBLIC_PATH . '/library/font-library.php';
+require_once PUBLIC_PATH . '/library/css-library.php';
+require_once PUBLIC_PATH . '/library/js-library.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Pengguna</title>
+
+    <!-- Favicon (see src/components/favicon.php) -->
+    <?php require SRC_PATH . '/components/favicon.php'; ?>
+    <!-- Font: Inter (local file, see public/library/font-library.php) -->
+    <?= fontLibrary('dashboard') ?>
+    <!-- Libraries: Bootstrap, Bootstrap Icons, Select2, SweetAlert2, Toastr (see public/library/css-library.php) -->
+    <?= cssLibrary('dashboard') ?>
+    <!-- Page styles: must come AFTER the libraries so they can override them -->
+    <link rel="stylesheet" href="<?= e(asset('assets/css/dashboard-css/main.css', true)) ?>">
+</head>
+
+<body>
+
+    <div class="app-wrapper">
+        <!-- ======================================================================== SIDEBAR ======================================================================== -->
+        <!-- Sidebar Desktop + Mobile (see src/layout/sidebar.php) -->
+        <?php require SRC_PATH . '/layout/sidebar.php'; ?>
+
+        <!-- ======================================================================== MAIN ======================================================================== -->
+        <div class="main-container">
+            <!-- ====================================================================== HEADER ====================================================================== -->
+            <?php require SRC_PATH . '/layout/header.php'; ?>
+
+            <!-- ====================================================================== MAIN CONTENT ====================================================================== -->
+            <main class="content-area">
+                <!-- BREADCRUMBS -->
+                <?php require SRC_PATH . '/components/breadcrumbs.php'; ?>
+                <!-- 3. 4 Kad Statistik (Grid: 4 lajur desktop, 2 lajur tablet, 1 lajur mobile) -->
+                <!-- PHP: Gantikan nilai statistik contoh di bawah dengan data pangkalan data menggunakan htmlspecialchars() -->
+                <section class="row g-3 g-lg-4 mb-4" aria-label="Ringkasan Statistik">
+                    <!-- Kad 1 -->
+                    <div class="col-12 col-sm-6 col-xl-3 animate-in delay-1">
+                        <div class="isisa-card stat-card d-flex flex-column justify-content-between">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="stat-icon-circle">
+                                    <i class="bi bi-people" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="stat-value tabular-nums mb-1">24</div>
+                                <div class="stat-label">Jumlah Pengguna</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kad 2 -->
+                    <div class="col-12 col-sm-6 col-xl-3 animate-in delay-2">
+                        <div class="isisa-card stat-card d-flex flex-column justify-content-between">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="stat-icon-circle">
+                                    <i class="bi bi-slash-circle" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="stat-value tabular-nums mb-1">3</div>
+                                <div class="stat-label">Pengguna Tidak Aktif</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kad 3 -->
+                    <div class="col-12 col-sm-6 col-xl-3 animate-in delay-3">
+                        <div class="isisa-card stat-card d-flex flex-column justify-content-between">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="stat-icon-circle">
+                                    <i class="bi bi-check2-circle" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="stat-value tabular-nums mb-1">21</div>
+                                <div class="stat-label">Pengguna Aktif</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kad 4 -->
+                    <div class="col-12 col-sm-6 col-xl-3 animate-in delay-4">
+                        <div class="isisa-card stat-card d-flex flex-column justify-content-between">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="stat-icon-circle">
+                                    <i class="bi bi-clock-history" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="stat-value tabular-nums mb-1">13 Nov 2026</div>
+                                <div class="stat-label">Kemaskini Terakhir</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. Jadual Aktiviti Terkini -->
+                <section class="row g-3 g-lg-4">
+
+                    <!-- 5. Kad Jadual Aktiviti Terkini -->
+                    <div class="col-12 order-1 animate-in delay-4">
+                        <div class="isisa-card p-3 p-md-4 h-100 d-flex flex-column">
+                            <div class="table-head mb-3">
+                                <div>
+                                    <h3 class="h6 fw-semibold mb-1">Senarai Pengguna</h3>
+                                    <p class="text-muted small mb-0">Senarai rekod pengguna yang aktif</p>
+                                </div>
+
+                                <!-- Bar Alat: Carian, Tapis, Set Semula & Tambah Data -->
+                                <div class="table-toolbar">
+                                    <div class="toolbar-search">
+                                        <i class="bi bi-search" aria-hidden="true"></i>
+                                        <input type="search" id="tableSearch" class="form-control toolbar-ctl" placeholder="Cari rekod..." aria-label="Carian rekod">
+                                    </div>
+                                    <select id="filterStatus" class="form-select toolbar-ctl toolbar-select" aria-label="Tapis mengikut status">
+                                        <option value="">Semua Status</option>
+                                        <!-- refer ref_status dynamic active and not active only-->
+                                    </select>
+                                    <button type="button" id="btnFilter" class="btn btn-primary toolbar-ctl">
+                                        <i class="bi bi-funnel" aria-hidden="true"></i><span>Tapis</span>
+                                    </button>
+                                    <button type="button" id="btnReset" class="btn toolbar-ctl toolbar-ctl-outline">
+                                        <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i><span>Set Semula</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- PHP: Gelung foreach untuk memaparkan baris jadual dari pangkalan data (gunakan htmlspecialchars()) -->
+                            <div class="table-responsive">
+                                <table class="table table-isisa align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style="width: 60px;">No.</th>
+                                            <th scope="col">No. Rujukan</th>
+                                            <th scope="col">Jabatan</th>
+                                            <th scope="col">Tarikh</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col" class="text-center" style="width: 110px;">Tindakan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="tabular-nums">
+                                        <tr>
+                                            <td class="text-muted">1</td>
+                                            <td class="fw-semibold">ISISA-2026-0891</td>
+                                            <td>Jabatan Kejuruteraan</td>
+                                            <td class="text-muted">13 Nov 2026</td>
+                                            <td>
+                                                <span class="badge-status badge-status-success">
+                                                    <i class="bi bi-circle-fill" style="font-size: 6px;" aria-hidden="true"></i>Diluluskan
+                                                </span>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="d-inline-flex gap-1">
+                                                    <a href="#" class="btn-action" aria-label="Sunting rekod" title="Sunting"><i class="bi bi-pencil" aria-hidden="true"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">2</td>
+                                            <td class="fw-semibold">ISISA-2026-0890</td>
+                                            <td>Jabatan Perancangan</td>
+                                            <td class="text-muted">13 Nov 2026</td>
+                                            <td>
+                                                <span class="badge-status badge-status-warning">
+                                                    <i class="bi bi-circle-fill" style="font-size: 6px;" aria-hidden="true"></i>Semakan
+                                                </span>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="d-inline-flex gap-1">
+                                                    <a href="#" class="btn-action" aria-label="Sunting rekod" title="Sunting"><i class="bi bi-pencil" aria-hidden="true"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">3</td>
+                                            <td class="fw-semibold">ISISA-2026-0889</td>
+                                            <td>Jabatan Pelesenan</td>
+                                            <td class="text-muted">12 Nov 2026</td>
+                                            <td>
+                                                <span class="badge-status badge-status-success">
+                                                    <i class="bi bi-circle-fill" style="font-size: 6px;" aria-hidden="true"></i>Diluluskan
+                                                </span>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="d-inline-flex gap-1">
+                                                    <a href="#" class="btn-action" aria-label="Sunting rekod" title="Sunting"><i class="bi bi-pencil" aria-hidden="true"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">4</td>
+                                            <td class="fw-semibold">ISISA-2026-0888</td>
+                                            <td>Jabatan Landskap</td>
+                                            <td class="text-muted">12 Nov 2026</td>
+                                            <td>
+                                                <span class="badge-status badge-status-danger">
+                                                    <i class="bi bi-circle-fill" style="font-size: 6px;" aria-hidden="true"></i>Perlu Tindakan
+                                                </span>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="d-inline-flex gap-1">
+                                                    <a href="#" class="btn-action" aria-label="Sunting rekod" title="Sunting"><i class="bi bi-pencil" aria-hidden="true"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">5</td>
+                                            <td class="fw-semibold">ISISA-2026-0887</td>
+                                            <td>Jabatan Khidmat Pengurusan</td>
+                                            <td class="text-muted">11 Nov 2026</td>
+                                            <td>
+                                                <span class="badge-status badge-status-success">
+                                                    <i class="bi bi-circle-fill" style="font-size: 6px;" aria-hidden="true"></i>Diluluskan
+                                                </span>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="d-inline-flex gap-1">
+                                                    <a href="#" class="btn-action" aria-label="Sunting rekod" title="Sunting"><i class="bi bi-pencil" aria-hidden="true"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Pagination (10 rekod setiap halaman, see src/components/pagination.php) -->
+                            <?php require SRC_PATH . '/components/pagination.php'; ?>
+                        </div>
+                    </div>
+
+                </section>
+            </main>
+
+            <!-- ======================================================================
+           BAHAGIAN 4: FOOTER (Boleh diasingkan kepada includes/footer.php)
+           ====================================================================== -->
+            <?php require SRC_PATH . '/layout/footer.php'; ?>
+        </div>
+    </div>
+
+    <!-- Butang Kembali ke Atas -->
+    <button type="button" class="back-to-top" id="backToTop" aria-label="Kembali ke atas" title="Kembali ke atas">
+        <i class="bi bi-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Libraries: jQuery, Bootstrap bundle, Axios, Chart.js, Select2, SweetAlert2, Toastr (see public/library/js-library.php) -->
+    <?= jsLibrary('dashboard') ?>
+    <!-- Page scripts: type="module" because main.js imports its modules. Must come AFTER the libraries. -->
+    <script type="module" src="<?= e(asset('assets/js/dashboard-js/main.js', true)) ?>"></script>
+
+
+</body>
+
+</html>

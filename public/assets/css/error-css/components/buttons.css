@@ -1,0 +1,75 @@
+/* ==========================================================================
+   COMPONENT - Kumpulan tindakan & butang primary/outline
+   ========================================================================== */
+.action-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.btn-isisa-primary {
+    height: 48px;
+    padding: 0 1.5rem;
+    background-color: var(--isisa-primary);
+    border: 1px solid var(--isisa-primary);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.935rem;
+    border-radius: var(--isisa-radius-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: var(--isisa-shadow-btn);
+    transition: transform 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
+}
+
+.btn-isisa-primary:hover {
+    background-color: var(--isisa-primary-hover);
+    border-color: var(--isisa-primary-hover);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px -2px rgba(56, 102, 65, 0.34);
+}
+
+.btn-isisa-primary:active {
+    background-color: var(--isisa-primary-active) !important;
+    border-color: var(--isisa-primary-active) !important;
+    color: #ffffff !important;
+    transform: translateY(0);
+}
+
+.btn-isisa-primary:focus-visible {
+    box-shadow: var(--isisa-focus-ring);
+}
+
+.btn-isisa-outline {
+    height: 48px;
+    padding: 0 1.35rem;
+    background-color: var(--isisa-surface);
+    border: 1px solid var(--isisa-border);
+    color: var(--isisa-text-main);
+    font-weight: 600;
+    font-size: 0.935rem;
+    border-radius: var(--isisa-radius-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 2px 6px rgba(24, 34, 27, 0.03);
+    transition: transform 200ms ease, border-color 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
+}
+
+.btn-isisa-outline:hover {
+    background-color: #f3f6f4;
+    border-color: var(--isisa-border-hover);
+    color: var(--isisa-text-main);
+    transform: translateY(-1px);
+    box-shadow: var(--isisa-shadow-soft);
+}
+
+.btn-isisa-outline:focus-visible {
+    box-shadow: var(--isisa-focus-ring);
+}

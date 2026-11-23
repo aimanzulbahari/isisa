@@ -1,0 +1,83 @@
+/* ==========================================================================
+   LAYOUT - Sidebar (desktop tetap & offcanvas mobile)
+   ========================================================================== */
+.sidebar-desktop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--isisa-sidebar-width);
+    background-color: var(--isisa-surface);
+    border-right: 1px solid var(--isisa-border);
+    z-index: 1030;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-offcanvas {
+    width: var(--isisa-sidebar-width) !important;
+    background-color: var(--isisa-surface);
+    border-right: 1px solid var(--isisa-border);
+}
+
+/* Hiasan daun pada bahagian bawah sidebar (SVG sebaris, hijau lembut) */
+.sidebar-desktop::after,
+.sidebar-offcanvas::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 360px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 260 360'%3E%3Cdefs%3E%3Cg id='l'%3E%3Cpath d='M0 0C22-36 76-36 104 0C76 36 22 36 0 0Z'/%3E%3Cpath d='M4 0H98' fill='none' stroke='%23ffffff' stroke-opacity='.55' stroke-width='1.6' stroke-linecap='round'/%3E%3C/g%3E%3C/defs%3E%3Cg fill='%23386641'%3E%3Cuse xlink:href='%23l' href='%23l' transform='translate(-18 352) rotate(-62) scale(1.5)' opacity='.13'/%3E%3Cuse xlink:href='%23l' href='%23l' transform='translate(30 360) rotate(-82) scale(1.25)' opacity='.10'/%3E%3Cuse xlink:href='%23l' href='%23l' transform='translate(20 262) rotate(-30) scale(.9)' opacity='.09'/%3E%3C/g%3E%3Cg fill='%236a994e'%3E%3Cuse xlink:href='%23l' href='%23l' transform='translate(278 340) rotate(-118) scale(1.55)' opacity='.15'/%3E%3Cuse xlink:href='%23l' href='%23l' transform='translate(236 362) rotate(-98) scale(1.2)' opacity='.12'/%3E%3Cuse xlink:href='%23l' href='%23l' transform='translate(250 236) rotate(-150) scale(.95)' opacity='.10'/%3E%3Cuse xlink:href='%23l' href='%23l' transform='translate(120 372) rotate(-90) scale(1.1)' opacity='.10'/%3E%3Cuse xlink:href='%23l' href='%23l' transform='translate(150 300) rotate(-70) scale(.7)' opacity='.08'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: 100% auto;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.sidebar-desktop>*,
+.sidebar-offcanvas>* {
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar-brand {
+    height: var(--isisa-header-height);
+    padding: 0 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--isisa-border);
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.sidebar-brand img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.sidebar-brand-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--isisa-primary);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.sidebar-brand-subtitle {
+    white-space: nowrap;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--isisa-text-muted);
+    line-height: 1.2;
+}
+
+.sidebar-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.25rem 0.875rem;
+}

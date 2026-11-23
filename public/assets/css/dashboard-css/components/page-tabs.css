@@ -1,0 +1,80 @@
+/* ==========================================================================
+   COMPONENT - Tab halaman
+   ========================================================================== */
+/* Tab halaman (1–8): garis bawah, boleh digulung mendatar pada skrin kecil */
+.page-tabs-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-bottom: 1px solid var(--isisa-border);
+}
+
+.page-tabs-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.page-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+    min-width: max-content;
+}
+
+.page-tabs .nav-link {
+    position: relative;
+    border: none;
+    background: transparent;
+    color: var(--isisa-text-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 0.75rem 1.1rem;
+    border-radius: 8px 8px 0 0;
+    transition: color var(--isisa-transition), background-color var(--isisa-transition);
+}
+
+.page-tabs .nav-link:hover {
+    color: var(--isisa-primary);
+    background-color: var(--isisa-secondary-soft);
+}
+
+.page-tabs .nav-link.active {
+    color: var(--isisa-primary);
+    font-weight: 600;
+    background-color: transparent;
+}
+
+.page-tabs .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0.6rem;
+    right: 0.6rem;
+    bottom: -1px;
+    height: 3px;
+    background-color: var(--isisa-primary);
+    border-radius: 3px 3px 0 0;
+}
+
+.page-tabs .nav-link:focus-visible {
+    outline: 2px solid var(--isisa-secondary);
+    outline-offset: -2px;
+}
+
+/* Dropdown tab (skrin kecil): naikkan lapisan supaya menu tak terlindung oleh kad di bawahnya */
+.page-tabs-dropdown {
+    position: relative;
+    z-index: 20;
+}
+
+.page-tabs-dropdown .dropdown-menu {
+    --bs-dropdown-bg: var(--isisa-surface);
+    margin-top: 0.35rem !important;
+}
+
+/* Skrin kecil: tab sedikit lebih padat */
+@media (max-width: 575.98px) {
+    .page-tabs .nav-link {
+        padding: 0.7rem 0.9rem;
+    }
+}

@@ -1,0 +1,42 @@
+/* ==========================================================================
+   UTILITY - Animasi & prefers-reduced-motion
+   ========================================================================== */
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-entry {
+    animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-delay-1 {
+    animation-delay: 0.1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .animate-entry,
+    .animate-delay-1 {
+        animation: none !important;
+    }
+
+    .btn-isisa-primary,
+    .form-control-custom,
+    .btn-read-more,
+    .btn-read-more i,
+    .custom-carousel-indicators [data-bs-target] {
+        transition: none !important;
+    }
+
+    .btn-isisa-primary:hover {
+        transform: none !important;
+    }
+}

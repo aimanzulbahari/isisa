@@ -1,0 +1,85 @@
+/* ==========================================================================
+   COMPONENT - Lencana status & pepejal
+   ========================================================================== */
+.badge-status {
+    white-space: nowrap;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.badge-status-success {
+    background-color: var(--isisa-primary-soft);
+    color: var(--isisa-primary);
+}
+
+.badge-status-warning {
+    background-color: #fef6e7;
+    color: #9a5b13;
+}
+
+.badge-status-danger {
+    background-color: #fef3f2;
+    color: #b42318;
+}
+
+.badge-status-info {
+    background-color: #eaf3fb;
+    color: #1f5f8b;
+}
+
+.badge-status-neutral {
+    background-color: #eff1ee;
+    color: #5c6b5e;
+}
+
+/* Badge pepejal */
+.badge-solid-success {
+    background-color: #386641;
+    color: #fff;
+}
+
+.badge-solid-warning {
+    background-color: #e9a23b;
+    color: #3b2a07;
+}
+
+.badge-solid-danger {
+    background-color: #c93b3b;
+    color: #fff;
+}
+
+.badge-solid-info {
+    background-color: #2f7eb5;
+    color: #fff;
+}
+
+.badge-solid-neutral {
+    background-color: #7a877c;
+    color: #fff;
+}
+
+/* Badge Meja Bantuan: tahap keterukan aduan */
+.badge-severity-low {
+    background-color: #00ac46;
+    color: #fff;
+}
+
+.badge-severity-medium {
+    background-color: #fdc500;
+    color: #3b2a07;
+}
+
+.badge-severity-high {
+    background-color: #dc0000;
+    color: #fff;
+}
+
+.badge-severity-critical {
+    background-color: #780000;
+    color: #fff;
+}

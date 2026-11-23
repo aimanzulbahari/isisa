@@ -1,0 +1,75 @@
+/* ==========================================================================
+   MARKDOWN - rupa untuk kandungan Markdown (halaman Guide: README.md)
+   Digunakan oleh <article class="markdown-body"> dalam MyModules/Guide/Guide.php
+   ========================================================================== */
+.markdown-body {
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4 {
+    font-weight: 600;
+    margin: 1.6rem 0 .75rem;
+}
+
+.markdown-body h1 { font-size: 1.6rem; }
+
+.markdown-body h2 {
+    font-size: 1.3rem;
+    padding-bottom: .4rem;
+    border-bottom: 1px solid var(--isisa-border);
+}
+
+.markdown-body h3 { font-size: 1.1rem; }
+
+.markdown-body > :first-child { margin-top: 0; }
+
+.markdown-body pre {
+    padding: 1rem;
+    border: 1px solid var(--isisa-border);
+    border-radius: .5rem;
+    overflow-x: auto;
+    background: rgba(127, 127, 127, .08);
+}
+
+.markdown-body code { font-size: .875em; }
+
+.markdown-body :not(pre) > code {
+    padding: .15rem .35rem;
+    border-radius: .3rem;
+    background: rgba(127, 127, 127, .12);
+}
+
+.markdown-body table {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+.markdown-body th,
+.markdown-body td {
+    padding: .5rem .75rem;
+    border: 1px solid var(--isisa-border);
+}
+
+.markdown-body th {
+    font-weight: 600;
+    background: rgba(127, 127, 127, .08);
+}
+
+.markdown-body blockquote {
+    margin: 0 0 1rem;
+    padding: .25rem 1rem;
+    border-left: 4px solid var(--isisa-border);
+    color: var(--isisa-text-muted);
+}
+
+.markdown-body img {
+    max-width: 100%;
+    height: auto;
+}

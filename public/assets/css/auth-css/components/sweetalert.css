@@ -1,0 +1,162 @@
+/* ==========================================================================
+   COMPONENT - SweetAlert2 ikut tema (popup mesej halaman log masuk)
+
+   Rupa popup ini sama dengan popup "Log Keluar?" pada dashboard
+   (dashboard-css/components/sweetalert.css). Kelas disasarkan melalui
+   customClass dalam auth-js/modules/notice-popup.js:
+     popup         -> swal-isisa
+     confirmButton -> swal-btn swal-btn-confirm (+ swal-danger untuk merah)
+     cancelButton  -> swal-btn swal-btn-cancel
+   ========================================================================== */
+.swal2-popup.swal-isisa {
+    font-family: var(--bs-body-font-family);
+    border-radius: var(--isisa-radius-lg);
+    padding: 1.75rem 1.5rem 1.5rem;
+    width: 26em;
+}
+
+.swal2-popup.swal-isisa .swal2-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--isisa-text-main);
+    letter-spacing: -0.01em;
+}
+
+.swal2-popup.swal-isisa .swal2-html-container {
+    font-size: 0.9rem;
+    color: var(--isisa-text-muted);
+}
+
+.swal2-popup.swal-isisa .swal2-actions {
+    gap: 0.5rem;
+}
+
+.swal2-popup.swal-isisa .swal-btn {
+    height: 38px;
+    min-width: 92px;
+    padding: 0 1.1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0;
+    box-shadow: none;
+}
+
+.swal2-popup.swal-isisa .swal-btn-confirm {
+    background-color: var(--isisa-primary);
+    border: 1px solid var(--isisa-primary);
+    color: #fff;
+}
+
+.swal2-popup.swal-isisa .swal-btn-confirm:hover {
+    background-color: var(--isisa-primary-hover);
+}
+
+.swal2-popup.swal-isisa .swal-btn-confirm.swal-danger {
+    background-color: #c93b3b;
+    border-color: #c93b3b;
+}
+
+.swal2-popup.swal-isisa .swal-btn-confirm.swal-danger:hover {
+    background-color: #a83030;
+}
+
+.swal2-popup.swal-isisa .swal-btn-cancel {
+    background-color: var(--isisa-surface);
+    border: 1px solid var(--isisa-border);
+    color: var(--isisa-text-main);
+}
+
+.swal2-popup.swal-isisa .swal-btn-cancel:hover {
+    /* --isisa-secondary-soft tiada pada halaman auth, jadi guna warna utama yang lembut */
+    background-color: var(--isisa-secondary-soft, rgba(var(--isisa-primary-rgb), 0.08));
+    color: var(--isisa-primary);
+}
+
+.swal2-popup.swal-isisa .swal2-actions .swal2-confirm:focus-visible,
+.swal2-popup.swal-isisa .swal2-actions .swal2-cancel:focus-visible {
+    box-shadow: 0 0 0 0.2rem rgba(106, 153, 78, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   Popup Penyelenggaraan (UI sahaja): ikon bulat, ringkasan Mula/Tamat/Pegawai
+   -------------------------------------------------------------------------- */
+.swal2-popup.swal-isisa.swal-maintenance {
+    width: 30em;
+    max-width: 94vw;
+}
+
+.swal-maintenance .maint-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    margin: 0.5rem auto 1rem;
+    border: none;
+    border-radius: 50%;
+    background-color: #fdf1e6;
+    color: #c4501b;
+    font-size: 1.9rem;
+}
+
+.swal-maintenance .swal2-html-container {
+    margin: 0.5rem 0 0;
+    padding: 0;
+    overflow: visible;
+}
+
+.maint-message {
+    margin: 0 0 1.25rem;
+    font-size: 0.95rem;
+    color: var(--isisa-text-muted);
+}
+
+.maint-info {
+    margin: 0 0 0.25rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--isisa-border);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.maint-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.3rem 0;
+    font-size: 0.85rem;
+}
+
+.maint-row dt {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-weight: 400;
+    color: var(--isisa-text-muted);
+}
+
+.maint-row dd {
+    margin: 0;
+    font-weight: 600;
+    color: var(--isisa-text-main);
+    text-align: right;
+}
+
+/* Butang "Faham" penuh lebar */
+.swal-maintenance .swal2-actions {
+    width: 100%;
+    margin-top: 1.25rem;
+}
+
+.swal-maintenance .swal-btn-confirm {
+    width: 100%;
+    height: 44px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* SweetAlert2 menetapkan saiz kandungan ikon sangat besar (3.75em); kecilkan di sini */
+.swal-maintenance .maint-icon .swal2-icon-content {
+    font-size: 1.9rem;
+    line-height: 1;
+}

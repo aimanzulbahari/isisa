@@ -1,0 +1,66 @@
+/* ==========================================================================
+   LAYOUT - Topbar (hubungi & pautan sosial) di atas bar navigasi
+   ========================================================================== */
+.topbar {
+    background: var(--navy-2);
+    color: #d5e0ec;
+    font-size: .8rem;
+    line-height: 1.2;
+}
+
+.topbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    min-height: 2.25rem;
+}
+
+.topbar ul {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.topbar a {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    color: inherit;
+    text-decoration: none;
+    transition: color .15s ease;
+}
+
+.topbar a:hover,
+.topbar a:focus-visible {
+    color: #fff;
+}
+
+.topbar i {
+    color: var(--lime);
+    font-size: .95rem;
+}
+
+.topbar-social {
+    gap: .85rem;
+}
+
+.topbar-social i {
+    color: inherit;
+    font-size: 1rem;
+}
+
+/* Telefon kecil: ikon sahaja untuk hubungi (teks kekal untuk pembaca skrin) */
+@media (max-width: 575.98px) {
+    .topbar-text {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
+}

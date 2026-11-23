@@ -1,0 +1,138 @@
+/* ==========================================================================
+   COMPONENT - Timeline
+   ========================================================================== */
+/* Timeline */
+.timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1.75rem;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+/* Garis penghubung antara titik */
+.timeline-item:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 38px;
+    bottom: 2px;
+    width: 2px;
+    background-color: var(--isisa-border);
+    border-radius: 2px;
+}
+
+.timeline-item.timeline-item-pending:not(:last-child)::before,
+.timeline-item.timeline-item-current:not(:last-child)::before {
+    background: repeating-linear-gradient(to bottom, var(--isisa-border) 0 5px, transparent 5px 10px);
+}
+
+.timeline-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border: 2px solid var(--isisa-surface);
+    box-shadow: 0 0 0 1px var(--isisa-border);
+}
+
+.timeline-dot-success {
+    background-color: var(--isisa-primary);
+    color: #fff;
+    box-shadow: 0 0 0 1px var(--isisa-primary);
+}
+
+.timeline-dot-info {
+    background-color: #eaf3fb;
+    color: #1f5f8b;
+    box-shadow: 0 0 0 1px #c6dff1;
+}
+
+.timeline-dot-warning {
+    background-color: #fef6e7;
+    color: #9a5b13;
+    box-shadow: 0 0 0 1px #f6dfb0;
+}
+
+.timeline-dot-neutral {
+    background-color: #eff1ee;
+    color: #5c6b5e;
+}
+
+.timeline-dot-current {
+    background-color: var(--isisa-primary-soft);
+    color: var(--isisa-primary);
+    box-shadow: 0 0 0 2px var(--isisa-secondary);
+}
+
+.timeline-dot-pending {
+    background-color: var(--isisa-surface);
+    color: #9aa89c;
+    border-style: dashed;
+    border-color: #cfd9cc;
+    box-shadow: none;
+}
+
+.timeline-content {
+    flex: 1;
+    min-width: 0;
+    padding-top: 0.15rem;
+}
+
+.timeline-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--isisa-text-main);
+}
+
+.timeline-time {
+    font-size: 0.78rem;
+    color: var(--isisa-text-muted);
+    white-space: nowrap;
+}
+
+.timeline-desc {
+    font-size: 0.85rem;
+    color: var(--isisa-text-muted);
+    margin: 0.25rem 0 0.4rem;
+    line-height: 1.55;
+}
+
+.timeline-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--isisa-text-muted);
+    background-color: #f1f4f0;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+}
+
+.timeline-item-current .timeline-title {
+    color: var(--isisa-primary);
+}
+
+.timeline-item-pending .timeline-title {
+    color: #8c9a8e;
+    font-weight: 500;
+}
+
+.timeline-item-pending .timeline-desc {
+    color: #a3afa5;
+}

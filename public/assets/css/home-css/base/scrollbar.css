@@ -1,0 +1,41 @@
+/* ==========================================================================
+   BASE - Scrollbar ikut tema (hijau ISISA)
+   ========================================================================== */
+:root {
+    --scroll-track: var(--bg-alt);
+    --scroll-thumb: rgba(60, 122, 14, .55);
+    --scroll-thumb-hover: var(--lime-hi);
+}
+
+/* Scrollbar halaman dan semua kawasan skrol (Chrome, Edge, Safari) */
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--scroll-track);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb);
+    border-radius: 10px;
+    border: 2px solid var(--scroll-track);
+    background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scroll-thumb-hover);
+}
+
+*::-webkit-scrollbar-corner {
+    background: var(--scroll-track);
+}
+
+/* Firefox */
+@supports (-moz-appearance: none) {
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+    }
+}

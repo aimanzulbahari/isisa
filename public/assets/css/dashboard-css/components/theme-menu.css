@@ -1,0 +1,67 @@
+/* ==========================================================================
+   COMPONENT - Lencana notifikasi, dropdown tema & logout
+   ========================================================================== */
+/* Lencana nombor pada menu Notifikasi */
+.notif-count {
+    min-width: 22px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background-color: #c93b3b;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+}
+
+/* Dropdown tukar tema: petak warna sahaja */
+.theme-menu {
+    min-width: 0;
+    width: 208px;
+    padding: 0.75rem;
+}
+
+.theme-menu-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--isisa-text-muted);
+    margin-bottom: 0.6rem;
+}
+
+.theme-swatches {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+    justify-items: center;
+}
+
+.theme-swatch {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    background-color: var(--swatch);
+    box-shadow: 0 0 0 1px var(--isisa-border);
+    padding: 0;
+    transition: transform var(--isisa-transition), box-shadow var(--isisa-transition);
+}
+
+.theme-swatch:hover {
+    transform: scale(1.1);
+}
+
+.theme-swatch.active {
+    box-shadow: 0 0 0 2px var(--swatch);
+}
+
+.dropdown-item-logout {
+    color: #b42318 !important;
+}
+
+.dropdown-item-logout:hover {
+    background-color: #fef3f2 !important;
+    color: #912018 !important;
+}

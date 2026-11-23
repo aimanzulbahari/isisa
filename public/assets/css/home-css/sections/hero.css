@@ -1,0 +1,283 @@
+/* ==========================================================================
+   SECTION - Hero
+   ========================================================================== */
+/* ---------- Hero ---------- */
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(4rem, 8vw, 7rem);
+    background: radial-gradient(60rem 30rem at 85% -10%, rgba(31, 127, 209, .10), transparent 60%), linear-gradient(#f4f7fb, #ffffff);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(11, 37, 64, .13) 1px, transparent 1px);
+    background-size: 28px 28px;
+    -webkit-mask-image: linear-gradient(to bottom, #000, transparent 85%);
+    mask-image: linear-gradient(to bottom, #000, transparent 85%);
+}
+
+.hero>.container {
+    position: relative;
+}
+
+.hero h1 {
+    font-size: clamp(2.4rem, 5.4vw, 4rem);
+    letter-spacing: -.035em;
+    line-height: 1.05;
+    margin: 1.25rem 0;
+    max-width: 16ch;
+    text-wrap: balance;
+}
+
+.hero .lead {
+    color: var(--muted);
+    font-size: 1.15rem;
+    max-width: 46ch;
+    margin-bottom: 2rem;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .35rem .85rem;
+    border: 1px solid rgba(60, 122, 14, .4);
+    background: rgba(90, 154, 28, .09);
+    border-radius: 999px;
+    color: var(--lime-hi);
+    font-size: .85rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Paparan dashboard contoh: kekal gelap sebagai "skrin", dengan lapisan bertindan seperti lapisan peta GIS dalam slaid */
+.deck {
+    --muted: #9fb0c3;
+    --line: rgba(159, 176, 195, .16);
+    --lime: #7ab82e;
+    --lime-hi: #93cf45;
+    --sky: #2f9bea;
+    --amber: #f5a524;
+    --gold: #eab308;
+    --violet: #8b7cf6;
+    position: relative;
+    max-width: 34rem;
+    margin: 0 2.25rem 2.25rem auto;
+    color: #e8eef5;
+}
+
+@media (min-width: 992px) {
+    .deck {
+        margin-left: auto;
+        margin-right: 2.25rem;
+    }
+}
+
+.deck-layer {
+    position: absolute;
+    inset: 0;
+    border: 1px solid;
+    border-radius: 1.1rem;
+}
+
+.deck-layer.l2 {
+    transform: translate(.75rem, .75rem);
+    border-color: rgba(31, 127, 209, .5);
+    background: rgba(31, 127, 209, .07);
+}
+
+.deck-layer.l3 {
+    transform: translate(1.5rem, 1.5rem);
+    border-color: rgba(90, 154, 28, .5);
+    background: rgba(90, 154, 28, .07);
+}
+
+.deck-main {
+    position: relative;
+    background: #10263f;
+    border: 1px solid rgba(159, 176, 195, .22);
+    border-radius: 1.1rem;
+    padding: 1.25rem;
+    box-shadow: 0 30px 60px -28px rgba(11, 37, 64, .55);
+}
+
+.deck-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1rem;
+}
+
+.deck-title {
+    font-weight: 700;
+    font-size: .95rem;
+    color: #fff;
+}
+
+.deck-title i {
+    color: var(--lime-hi);
+    margin-right: .4rem;
+}
+
+.deck-tag {
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--gold);
+    border: 1px solid rgba(234, 179, 8, .45);
+    border-radius: 999px;
+    padding: .1rem .6rem;
+    white-space: nowrap;
+}
+
+.kpis {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .65rem;
+}
+
+.kpi {
+    background: rgba(255, 255, 255, .05);
+    border-radius: .7rem;
+    padding: .65rem .85rem;
+}
+
+.kpi-l {
+    display: block;
+    font-size: .72rem;
+    color: var(--muted);
+}
+
+.kpi-v {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--heading);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.02em;
+}
+
+.deck .kpi-v {
+    color: #fff;
+}
+
+.kpi-v small {
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin-left: .2rem;
+}
+
+.deck-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    margin-top: 1.1rem;
+}
+
+@media (min-width: 480px) {
+    .deck-grid {
+        grid-template-columns: 1.6fr 1fr;
+    }
+}
+
+.chart-t {
+    font-size: .72rem;
+    color: var(--muted);
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.bars {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: end;
+    gap: 5px;
+    height: 6.5rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.bars i {
+    display: block;
+    height: var(--h);
+    background: var(--lime);
+    border-radius: 3px 3px 0 0;
+    transform-origin: bottom;
+    animation: rise .85s cubic-bezier(.2, .7, .2, 1) both;
+    animation-delay: calc(var(--i) * 55ms + .25s);
+}
+
+.bars i:nth-last-child(-n+3) {
+    background: var(--lime-hi);
+}
+
+.months {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 5px;
+    margin-top: .3rem;
+    font-size: .62rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+.donut-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .9rem;
+}
+
+@media (min-width: 480px) {
+    .donut-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.donut {
+    flex: none;
+    width: 5.6rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: conic-gradient(var(--lime) 0 48%, var(--sky) 48% 75%, var(--amber) 75% 90%, var(--violet) 90% 100%);
+    -webkit-mask: radial-gradient(circle, transparent 52%, #000 53%);
+    mask: radial-gradient(circle, transparent 52%, #000 53%);
+    animation: sweep 1s cubic-bezier(.2, .7, .2, 1) .4s both;
+}
+
+.leg {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: .72rem;
+    color: var(--muted);
+}
+
+.leg li {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+.leg li::before {
+    content: "";
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background: var(--c);
+}
+
+.deck-note {
+    margin: 1rem 0 0;
+    font-size: .72rem;
+    color: var(--muted);
+}
+
+html.js-gsap .bars i,
+html.js-gsap .donut {
+    animation: none;
+}

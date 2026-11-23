@@ -1,0 +1,55 @@
+/* ==========================================================================
+   COMPONENT - Breadcrumbs
+   ========================================================================== */
+/* Breadcrumbs dengan chevron dan scroll mendatar pada mobile */
+.breadcrumb-wrapper {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-bottom: 1.15rem;
+}
+
+.breadcrumb-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.breadcrumb-custom {
+    margin-bottom: 0;
+    font-size: 0.8125rem;
+    flex-wrap: nowrap;
+}
+
+.breadcrumb-custom .breadcrumb-item {
+    display: inline-flex;
+    align-items: center;
+    color: var(--isisa-text-muted);
+}
+
+.breadcrumb-custom .breadcrumb-item a {
+    color: var(--isisa-text-muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color var(--isisa-transition);
+}
+
+.breadcrumb-custom .breadcrumb-item a:hover {
+    color: var(--isisa-primary);
+}
+
+.breadcrumb-custom .breadcrumb-item.active {
+    color: var(--isisa-text-main);
+    font-weight: 600;
+}
+
+.breadcrumb-custom .breadcrumb-item+.breadcrumb-item::before {
+    content: "\F285";
+    /* Bootstrap Icons bi-chevron-right */
+    font-family: "bootstrap-icons";
+    font-size: 0.7rem;
+    color: #8c9a8e;
+    padding-right: 0.5rem;
+    padding-left: 0.25rem;
+}

@@ -1,0 +1,65 @@
+/* ==========================================================================
+   COMPONENT - Label & input borang berikon
+   ========================================================================== */
+.form-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--isisa-text-main);
+    margin-bottom: 0.45rem;
+}
+
+.input-icon-wrapper {
+    position: relative;
+}
+
+.input-icon-left {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    color: var(--isisa-text-muted);
+    font-size: 1.05rem;
+    pointer-events: none;
+    transition: color 200ms ease;
+    z-index: 4;
+}
+
+.form-control-custom {
+    height: 48px;
+    border-radius: var(--isisa-radius-sm);
+    border: 1px solid var(--isisa-border);
+    background-color: var(--isisa-surface);
+    padding-left: 2.75rem;
+    padding-right: 1rem;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--isisa-text-main);
+    transition:
+        border-color 200ms ease,
+        box-shadow 200ms ease,
+        background-color 200ms ease;
+}
+
+.form-control-custom.has-right-btn {
+    padding-right: 3rem;
+}
+
+.form-control-custom::placeholder {
+    color: #96a399;
+    font-weight: 400;
+}
+
+.form-control-custom:hover {
+    border-color: var(--isisa-border-hover);
+}
+
+.form-control-custom:focus {
+    border-color: var(--isisa-primary);
+    box-shadow: var(--isisa-focus-ring);
+    background-color: var(--isisa-surface);
+    outline: none;
+}
+
+.input-icon-wrapper:focus-within .input-icon-left {
+    color: var(--isisa-primary);
+}

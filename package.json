@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "axios": "^1.21.1",
+    "bootstrap": "^5.3.9",
+    "bootstrap-icons": "^1.13.2",
+    "chart.js": "^4.6.1",
+    "gsap": "^3.15.1",
+    "jquery": "^4.0.0",
+    "leaflet": "^1.9.4",
+    "select2": "^4.1.0",
+    "sweetalert2": "^11.26.25",
+    "toastr": "^2.1.4"
+  }
+}

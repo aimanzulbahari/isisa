@@ -1,0 +1,25 @@
+/* ==========================================================================
+   BASE - Override komponen Bootstrap (butang utama & fokus)
+   ========================================================================== */
+.btn-primary {
+    --bs-btn-bg: var(--isisa-primary);
+    --bs-btn-border-color: var(--isisa-primary);
+    --bs-btn-hover-bg: var(--isisa-primary-hover);
+    --bs-btn-hover-border-color: var(--isisa-primary-hover);
+    --bs-btn-active-bg: var(--isisa-primary-hover);
+    --bs-btn-active-border-color: var(--isisa-primary-hover);
+    --bs-btn-focus-shadow-rgb: 56, 102, 65;
+    --bs-btn-disabled-bg: var(--isisa-primary);
+    --bs-btn-disabled-border-color: var(--isisa-primary);
+    border-radius: var(--bs-btn-border-radius, var(--isisa-radius-md));
+    font-weight: 500;
+    transition: all var(--isisa-transition);
+}
+
+.form-control:focus,
+.btn:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--isisa-secondary);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 0.25rem rgba(106, 153, 78, 0.25);
+}

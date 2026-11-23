@@ -1,0 +1,24 @@
+/* ==========================================================================
+   UTILITY - Keyframes carta (rise, sweep)
+   ========================================================================== */
+@keyframes rise {
+    from {
+        transform: scaleY(0);
+    }
+
+    to {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes sweep {
+    from {
+        transform: rotate(-140deg) scale(.7);
+        opacity: 0;
+    }
+
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}

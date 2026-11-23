@@ -1,0 +1,44 @@
+/* ==========================================================================
+   LAYOUT - Wrapper log masuk, column borang & tajuk
+   ========================================================================== */
+.login-wrapper {
+    min-height: 100vh;
+}
+
+.form-column {
+    background-color: var(--isisa-bg-left);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 2rem 2.5rem;
+}
+
+.form-header {
+    width: 100%;
+    text-align: left;
+}
+
+.form-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.login-heading {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--isisa-text-main);
+    margin-bottom: 0.3rem;
+}
+
+.login-subheading {
+    font-size: 0.9rem;
+    color: var(--isisa-text-muted);
+}
+
+.form-container {
+    width: 100%;
+    max-width: 420px;
+}

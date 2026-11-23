@@ -1,0 +1,21 @@
+/* ==========================================================================
+   COMPONENT - Pautan halus & footer kiri
+   ========================================================================== */
+/* Pautan & Footer Kiri */
+.link-subtle {
+    font-size: 0.835rem;
+    font-weight: 500;
+    color: var(--isisa-primary);
+    text-decoration: none;
+    transition: color 200ms ease;
+}
+
+.link-subtle:hover {
+    color: var(--isisa-primary-hover);
+    text-decoration: underline;
+}
+
+.footer-copyright {
+    font-size: 0.78rem;
+    color: var(--isisa-text-muted);
+}

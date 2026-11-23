@@ -1,0 +1,81 @@
+/* ==========================================================================
+   COMPONENT - Varian butang (bahaya, soft, eksport, pautan)
+   ========================================================================== */
+/* Butang bahaya pepejal */
+.btn-danger-solid {
+    background-color: #c93b3b;
+    border: 1px solid #c93b3b;
+    color: #fff;
+}
+
+.btn-danger-solid:hover {
+    background-color: #a83030;
+    border-color: #a83030;
+    color: #fff;
+}
+
+/* Varian butang tambahan */
+.btn-soft {
+    background-color: var(--isisa-primary-soft);
+    border: 1px solid transparent;
+    color: var(--isisa-primary);
+}
+
+.btn-soft:hover {
+    background-color: #dfeae1;
+    color: var(--isisa-primary-hover);
+}
+
+.btn-danger-soft {
+    background-color: #fef3f2;
+    border: 1px solid transparent;
+    color: #b42318;
+}
+
+.btn-danger-soft:hover {
+    background-color: #fde4e1;
+    color: #912018;
+}
+
+/* Butang eksport (PDF / Excel / CSV): garis dengan ikon berwarna */
+.btn-export {
+    background-color: var(--isisa-surface);
+    border: 1px solid var(--isisa-border);
+    color: var(--isisa-text-main);
+}
+
+.btn-export:hover {
+    background-color: var(--isisa-secondary-soft);
+    border-color: #cfd9cc;
+    color: var(--isisa-text-main);
+}
+
+.btn-export-pdf i {
+    color: #c93b3b;
+}
+
+.btn-export-excel i {
+    color: #1e7a45;
+}
+
+.btn-export-csv i {
+    color: #2f7eb5;
+}
+
+.btn-link-isisa {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--isisa-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.btn-link-isisa:hover {
+    color: var(--isisa-primary-hover);
+    background-color: var(--isisa-secondary-soft);
+}
+
+.toolbar-ctl:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}

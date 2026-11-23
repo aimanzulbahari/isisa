@@ -1,0 +1,59 @@
+/* ==========================================================================
+   COMPONENTS - Halaman Info Sistem (medan logo & senarai maklumat PHP)
+   ========================================================================== */
+
+/* Medan muat naik logo: pratonton di kiri, input fail di kanan */
+.logo-field {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+}
+
+.logo-preview {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px dashed #cfd9cc;
+    border-radius: 10px;
+    background-color: var(--isisa-primary-soft);
+    color: var(--isisa-primary);
+    font-size: 1.4rem;
+}
+
+.logo-preview img {
+    max-width: 78%;
+    max-height: 78%;
+    object-fit: contain;
+}
+
+.min-w-0 {
+    min-width: 0;
+}
+
+/* Senarai kunci-nilai maklumat PHP */
+.php-info-list dt {
+    font-weight: 500;
+    color: var(--isisa-text-muted);
+    padding-bottom: 0.45rem;
+}
+
+.php-info-list dd {
+    font-weight: 600;
+    color: var(--isisa-text-main);
+    padding-bottom: 0.45rem;
+    word-break: break-word;
+}
+
+/* Accordion sentiasa terbuka: tajuk tidak boleh diklik & anak panah disembunyikan */
+.accordion-static .accordion-button {
+    cursor: default;
+    pointer-events: none;
+}
+
+.accordion-static .accordion-button::after {
+    display: none;
+}

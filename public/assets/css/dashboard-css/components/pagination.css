@@ -1,0 +1,35 @@
+/* ==========================================================================
+   COMPONENT - Pagination ikut tema
+   ========================================================================== */
+/* Pagination ikut tema */
+.pagination-isisa {
+    --bs-pagination-color: var(--isisa-text-main);
+    --bs-pagination-bg: var(--isisa-surface);
+    --bs-pagination-border-color: var(--isisa-border);
+    --bs-pagination-hover-color: var(--isisa-primary);
+    --bs-pagination-hover-bg: var(--isisa-secondary-soft);
+    --bs-pagination-hover-border-color: #cfd9cc;
+    --bs-pagination-focus-color: var(--isisa-primary);
+    --bs-pagination-focus-bg: var(--isisa-secondary-soft);
+    --bs-pagination-focus-box-shadow: 0 0 0 0.2rem rgba(106, 153, 78, 0.25);
+    --bs-pagination-active-bg: var(--isisa-primary);
+    --bs-pagination-active-border-color: var(--isisa-primary);
+    --bs-pagination-active-color: #ffffff;
+    --bs-pagination-disabled-color: #a3afa5;
+    --bs-pagination-disabled-bg: var(--isisa-surface);
+    --bs-pagination-disabled-border-color: var(--isisa-border);
+    --bs-pagination-border-radius: 8px;
+    --bs-pagination-font-size: 0.85rem;
+    gap: 0.3rem;
+}
+
+.pagination-isisa .page-link {
+    min-width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.6rem;
+    border-radius: 8px !important;
+    font-weight: 500;
+}

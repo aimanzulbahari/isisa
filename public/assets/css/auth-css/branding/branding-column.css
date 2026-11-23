@@ -1,0 +1,53 @@
+/* ==========================================================================
+   BRANDING - Column kanan & kandungan branding
+   ========================================================================== */
+.branding-column {
+    position: relative;
+    background: linear-gradient(135deg,
+            var(--isisa-primary) 0%,
+            var(--isisa-secondary) 100%);
+    color: #ffffff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3.5rem 2.5rem;
+    overflow: hidden;
+}
+
+/* Bekas Utama Branding (90% lebar column kanan, max-width 640px) */
+.branding-content {
+    position: relative;
+    z-index: 2;
+    width: 92%;
+    max-width: 860px;
+}
+
+.welcome-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.42rem 0.95rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 1.15rem;
+}
+
+.branding-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+}
+
+.branding-desc {
+    font-size: 0.98rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.92);
+    margin-bottom: 2.25rem;
+}

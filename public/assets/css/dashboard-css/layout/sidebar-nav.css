@@ -1,0 +1,116 @@
+/* ==========================================================================
+   LAYOUT - Navigasi sidebar (menu, submenu, chevron)
+   ========================================================================== */
+/* Sidebar: lebih nipis */
+.sidebar-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-section-title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--isisa-text-muted);
+    padding: 1.1rem 0.875rem 0.45rem;
+}
+
+.nav-item-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    height: 44px;
+    padding: 0 0.875rem;
+    border-radius: var(--isisa-radius-md);
+    color: var(--isisa-text-main);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    margin-bottom: 0.25rem;
+    transition: background-color var(--isisa-transition), color var(--isisa-transition);
+}
+
+.nav-item-link i.nav-icon {
+    font-size: 1.1rem;
+    color: var(--isisa-text-muted);
+    transition: color var(--isisa-transition);
+}
+
+.nav-item-link:hover {
+    background-color: var(--isisa-secondary-soft);
+    color: var(--isisa-primary);
+}
+
+.nav-item-link:hover i.nav-icon {
+    color: var(--isisa-primary);
+}
+
+/* Keadaan Menu Aktif */
+.nav-item-link.active {
+    background-color: var(--isisa-primary-soft);
+    color: var(--isisa-primary);
+    font-weight: 600;
+}
+
+.nav-item-link.active i.nav-icon {
+    color: var(--isisa-primary);
+}
+
+.nav-item-link.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 3.5px;
+    background-color: var(--isisa-primary);
+    border-radius: 0 4px 4px 0;
+}
+
+/* Dropdown Collapse Chevron */
+.nav-chevron {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--isisa-text-muted);
+    transition: transform var(--isisa-transition);
+}
+
+.nav-item-link[aria-expanded="true"] .nav-chevron {
+    transform: rotate(180deg);
+    color: var(--isisa-primary);
+}
+
+/* Sub-menu dengan garis menegak halus */
+.submenu-list {
+    list-style: none;
+    padding-left: 1.45rem;
+    margin: 0.15rem 0 0.4rem 1.25rem;
+    border-left: 1.5px solid var(--isisa-border);
+}
+
+.submenu-link {
+    display: flex;
+    align-items: center;
+    height: 38px;
+    padding: 0 0.75rem;
+    border-radius: 10px;
+    font-size: 0.835rem;
+    font-weight: 500;
+    color: var(--isisa-text-muted);
+    text-decoration: none;
+    margin-bottom: 0.15rem;
+    transition: all var(--isisa-transition);
+}
+
+.submenu-link:hover {
+    background-color: var(--isisa-secondary-soft);
+    color: var(--isisa-primary);
+}
+
+/* Halaman submenu yang sedang dibuka */
+.submenu-link.active {
+    background-color: var(--isisa-primary-soft);
+    color: var(--isisa-primary);
+    font-weight: 600;
+}

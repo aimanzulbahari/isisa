@@ -1,0 +1,92 @@
+/* ==========================================================================
+   COMPONENT - Welcome banner
+   ========================================================================== */
+/* Welcome Header / Banner */
+.welcome-banner {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--isisa-primary) 0%, var(--isisa-secondary) 100%);
+    border-radius: var(--isisa-radius-lg);
+    padding: 1.75rem;
+    color: #ffffff;
+    box-shadow: var(--isisa-shadow-sm);
+}
+
+@media (min-width: 768px) {
+    .welcome-banner {
+        padding: 2.15rem 2.25rem;
+    }
+}
+
+/* Hiasan latar abstrak CSS sahaja */
+.welcome-banner::before,
+.welcome-banner::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+
+.welcome-banner::before {
+    width: 280px;
+    height: 280px;
+    top: -110px;
+    right: -50px;
+    filter: blur(8px);
+}
+
+.welcome-banner::after {
+    width: 190px;
+    height: 190px;
+    bottom: -85px;
+    right: 160px;
+    background: rgba(255, 255, 255, 0.07);
+    filter: blur(4px);
+}
+
+.welcome-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.35rem;
+}
+
+@media (min-width: 768px) {
+    .welcome-title {
+        font-size: 1.65rem;
+    }
+}
+
+.welcome-date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.16);
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 0.85rem;
+}
+
+.btn-welcome-action {
+    background-color: #ffffff;
+    color: var(--isisa-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: var(--isisa-radius-md);
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all var(--isisa-transition);
+}
+
+.btn-welcome-action:hover {
+    background-color: #f4f8f4;
+    color: var(--isisa-primary-hover);
+    transform: translateY(-2px);
+}

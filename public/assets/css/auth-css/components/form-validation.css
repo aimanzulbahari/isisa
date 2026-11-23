@@ -1,0 +1,29 @@
+/* ==========================================================================
+   COMPONENT - Keadaan validasi borang
+   ========================================================================== */
+/* Tanda semak (✓) hijau Bootstrap pada medan yang sah dibuang.
+   Ia diletak di hujung kanan input, bertindih dengan ikon mata kata laluan,
+   dan tidak memberi maklumat berguna. Sempadan hijau kekal sebagai petunjuk. */
+.was-validated .form-control-custom:valid,
+.form-control-custom.is-valid {
+    background-image: none;
+}
+
+/* Validasi Bootstrap (Ralat Merah Lembut) */
+.was-validated .form-control-custom:invalid,
+.form-control-custom.is-invalid {
+    border-color: var(--isisa-danger);
+    background-image: none;
+}
+
+.was-validated .form-control-custom:invalid:focus,
+.form-control-custom.is-invalid:focus {
+    box-shadow: 0 0 0 0.22rem rgba(201, 59, 59, 0.16);
+}
+
+.invalid-feedback {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--isisa-danger);
+    margin-top: 0.35rem;
+}
