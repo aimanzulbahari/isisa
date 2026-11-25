@@ -20,7 +20,7 @@ declare(strict_types=1);
  *   error       : bootstrap, bootstrap-icons
  *   dashboard   : bootstrap, bootstrap-icons, select2, sweetalert2, toastr
  *
- * Extra library (not in a profile): leaflet (maps)
+ * Extra libraries (not in a profile): leaflet (maps), fullcalendar (calendar)
  *
  * Load your own CSS AFTER this, so your styles can override the libraries.
  * Fonts are loaded separately by font-library.php.
@@ -40,6 +40,12 @@ if (!function_exists('cssLibraryRegistry')) {
             'sweetalert2'     => 'UI/sweetalert2/sweetalert2.min.css',
             'toastr'          => 'UI/toastr/toastr.min.css',
             'leaflet'         => 'UI/leaflet/leaflet.css',
+            // FullCalendar v7: base styles, then the Monarch theme in green (matches the ISISA colour)
+            'fullcalendar'    => [
+                'UI/fullcalendar/skeleton.css',
+                'UI/fullcalendar/themes/monarch/theme.css',
+                'UI/fullcalendar/themes/monarch/palettes/green.css',
+            ],
         ];
     }
 }
@@ -74,10 +80,13 @@ if (!function_exists('cssLibrary')) {
 
         $html = '';
         foreach ($names as $name) {
-            if (!is_file(PUBLIC_PATH . '/' . $registry[$name])) {
-                throw new RuntimeException("CSS library file is missing: public/{$registry[$name]}");
+            // One file, or a list for a library that needs several (e.g. fullcalendar)
+            foreach ((array) $registry[$name] as $file) {
+                if (!is_file(PUBLIC_PATH . '/' . $file)) {
+                    throw new RuntimeException("CSS library file is missing: public/{$file}");
+                }
+                $html .= '<link rel="stylesheet" href="' . e(asset($file, true)) . '">' . PHP_EOL;
             }
-            $html .= '<link rel="stylesheet" href="' . e(asset($registry[$name], true)) . '">' . PHP_EOL;
         }
         return $html;
     }

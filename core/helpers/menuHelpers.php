@@ -29,6 +29,11 @@ if (!function_exists('menuRoles')) {
             // UTAMA
             'components'         => ['SUPERADMIN'],
             'dashboard'          => ['SUPERADMIN'],
+            // PENGURUSAN SISA
+            'waste-food'         => ['SUPERADMIN'],
+            'waste-industrial'   => ['SUPERADMIN'],
+            'waste-recycling'    => ['SUPERADMIN'],
+            'waste-contractor'   => ['SUPERADMIN'],
             // PENGURUSAN UTAMA
             'wisma'              => ['SUPERADMIN'],
             'role'               => ['SUPERADMIN'],

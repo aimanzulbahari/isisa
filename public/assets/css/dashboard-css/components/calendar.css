@@ -1,0 +1,146 @@
+/* ==========================================================================
+   COMPONENT - Kalendar (FullCalendar v7, tema Monarch hijau)
+   Pustaka dimuatkan melalui cssLibrary('dashboard', 'fullcalendar').
+   Di sini hanya warna dan bentuk disamakan dengan tema ISISA.
+   ========================================================================== */
+/* Pembungkus: meregang mengikut tinggi kad (minimum 520px). Kalendar diletak mutlak di dalamnya
+   supaya "height: 100%" FullCalendar sentiasa mempunyai tinggi yang pasti. */
+.program-calendar-wrap {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 520px;
+}
+
+.program-calendar-wrap > .program-calendar {
+    position: absolute;
+    inset: 0;
+}
+
+.program-calendar {
+    /* Palet Monarch -> warna utama ISISA */
+    --fc-monarch-primary: var(--isisa-primary);
+    --fc-monarch-primary-over: var(--isisa-primary-hover);
+    --fc-monarch-primary-down: var(--isisa-primary-hover);
+    --fc-monarch-primary-foreground: #ffffff;
+    --fc-monarch-secondary: var(--isisa-primary-soft);
+    --fc-monarch-secondary-foreground: var(--isisa-primary);
+    --fc-monarch-event: var(--isisa-primary);
+    --fc-monarch-highlight: rgba(56, 102, 65, 0.08);
+    --fc-monarch-outline: var(--isisa-primary);
+    --fc-monarch-selected: var(--isisa-primary);
+    --fc-monarch-selected-over: var(--isisa-primary-hover);
+    --fc-monarch-background: var(--isisa-surface, #ffffff);
+
+    font-family: inherit;
+}
+
+/* Petunjuk kategori di atas kalendar */
+.calendar-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    font-size: 0.8rem;
+    color: var(--isisa-text-muted);
+}
+
+.calendar-legend li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--dot, var(--isisa-primary));
+}
+
+/* Popup maklumat program (klik acara dalam kalendar) */
+.event-info-badge {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    background-color: var(--badge-color, var(--isisa-primary));
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.event-info-row {
+    display: flex;
+    gap: 1rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--isisa-border);
+    font-size: 0.88rem;
+}
+
+.event-info-row:last-child {
+    border-bottom: none;
+}
+
+.event-info-row dt {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex: 0 0 120px;
+    margin: 0;
+    font-weight: 400;
+    color: var(--isisa-text-muted);
+}
+
+.event-info-row dd {
+    margin: 0;
+    font-weight: 500;
+    color: var(--isisa-text-main);
+}
+
+/* Kad kiraan detik: program seterusnya */
+.countdown-event {
+    margin-bottom: 1rem;
+}
+
+.countdown-title {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--isisa-text-main);
+}
+
+.countdown-date {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+    font-size: 0.82rem;
+    color: var(--isisa-text-muted);
+}
+
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.countdown-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.7rem 0.25rem;
+    border: 1px solid var(--isisa-border);
+    border-radius: 10px;
+    background-color: var(--isisa-primary-soft);
+}
+
+.countdown-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--isisa-primary);
+}
+
+.countdown-unit {
+    margin-top: 0.2rem;
+    font-size: 0.72rem;
+    color: var(--isisa-text-muted);
+}

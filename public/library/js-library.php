@@ -21,7 +21,8 @@ declare(strict_types=1);
  *   error       : bootstrap
  *   dashboard   : jquery, bootstrap, axios, chart, select2, sweetalert2, toastr
  *
- * Extra libraries (not in a profile): leaflet (maps), gsap (animations, used by the home page)
+ * Extra libraries (not in a profile): leaflet (maps), gsap (animations, used by the home page),
+ * fullcalendar (calendar: also loads the Temporal polyfill, Malay language and the Monarch theme)
  *
  * Dependencies are handled for you: the load order below is fixed, so jQuery always
  * comes before Select2 and Toastr. If you pick select2 or toastr, jquery is added.
@@ -44,6 +45,14 @@ if (!function_exists('jsLibraryRegistry')) {
             'sweetalert2' => 'UI/sweetalert2/sweetalert2.min.js',       // Its CSS comes from css-library.php
             'toastr'      => 'UI/toastr/toastr.min.js',
             'leaflet'     => 'UI/leaflet/leaflet.js',
+            // FullCalendar v7 (calendar). Needs the Temporal polyfill first. The files load in this order:
+            // calendar, Malay and other languages (locales), then the Monarch theme (its CSS comes from css-library.php)
+            'temporal-polyfill' => 'UI/temporal-polyfill/global.js',
+            'fullcalendar'      => [
+                'UI/fullcalendar/fullcalendar.js',
+                'UI/fullcalendar/locales.js',
+                'UI/fullcalendar/themes/monarch/global.js',
+            ],
         ];
     }
 }
@@ -67,6 +76,7 @@ if (!function_exists('jsLibraryDependencies')) {
         return [
             'select2' => ['jquery'],
             'toastr'  => ['jquery'],
+            'fullcalendar' => ['temporal-polyfill'],
         ];
     }
 }
@@ -102,7 +112,7 @@ if (!function_exists('jsLibrary')) {
 
         $html = '';
         foreach ($names as $name) {
-            $files = [$registry[$name]];
+            $files = (array) $registry[$name]; // one file, or a list for a library that needs several
 
             // Select2 also needs its language file, loaded right after it
             if ($name === 'select2') {

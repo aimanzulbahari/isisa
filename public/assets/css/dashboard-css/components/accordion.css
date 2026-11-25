@@ -60,3 +60,61 @@
     color: var(--isisa-text-muted);
     line-height: 1.6;
 }
+
+/* Senarai seksyen dalam accordion jabatan (Management/Wisma/Section) */
+.section-count {
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    background-color: var(--isisa-primary-soft);
+    color: var(--isisa-primary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.section-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1.25rem;
+    border-bottom: 1px solid var(--isisa-border);
+}
+
+.section-row:last-child {
+    border-bottom: none;
+}
+
+.section-row:hover {
+    background-color: var(--isisa-secondary-soft, rgba(56, 102, 65, 0.05));
+}
+
+.section-no {
+    flex: 0 0 1.5rem;
+    font-size: 0.85rem;
+}
+
+.section-info {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.section-name {
+    font-weight: 600;
+    color: var(--isisa-text-main);
+}
+
+.section-desc {
+    font-size: 0.8rem;
+    color: var(--isisa-text-muted);
+}
+
+@media (max-width: 575.98px) {
+    .section-row {
+        flex-wrap: wrap;
+        gap: 0.5rem 0.75rem;
+    }
+
+    .section-info {
+        flex-basis: calc(100% - 3rem);
+    }
+}

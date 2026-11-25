@@ -3,7 +3,8 @@ CREATE TABLE `ref_section` (
   `ref_section_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `ref_department_id` INT UNSIGNED NOT NULL,
   `ref_section_code` VARCHAR(50) NOT NULL,
-  `ref_section_description` VARCHAR(255) NOT NULL,
+  `ref_section_name` VARCHAR(255) NOT NULL COMMENT 'Nama seksyen',
+  `ref_section_description` VARCHAR(300) NULL DEFAULT NULL COMMENT 'Keterangan seksyen (textarea popup Tambah Seksyen)',
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created_by` INT UNSIGNED NULL DEFAULT NULL,
   `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -15,7 +16,7 @@ CREATE TABLE `ref_section` (
 PRIMARY KEY (`ref_section_id`),
   UNIQUE INDEX `idx_ref_section_code` (`ref_section_code`),
   INDEX `idx_ref_section_department` (`ref_department_id`),
-  INDEX `idx_ref_section_description` (`ref_section_description`),
+  INDEX `idx_ref_section_name` (`ref_section_name`),
   INDEX `idx_ref_section_status` (`ref_status_id`),
   INDEX `idx_ref_section_created_by` (`created_by`),
   

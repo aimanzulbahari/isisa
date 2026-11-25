@@ -68,7 +68,7 @@ final class EmployeeModel
             'SELECT u.users_id, u.myID, u.fullname, u.dob, u.age, u.email, u.phone_number, u.office_extension,
                     u.ref_department_id, u.ref_section_id, u.ref_division_id, u.ref_branch_id,
                     u.ref_role_id, u.ref_role_type_id, u.ref_status_id, u.updated_at,
-                    d.ref_department_description, sec.ref_section_description,
+                    d.ref_department_description, sec.ref_section_name,
                     r.ref_role_description, s.ref_status_description
              FROM users u
              LEFT JOIN ref_department d   ON d.ref_department_id = u.ref_department_id
@@ -142,13 +142,14 @@ final class EmployeeModel
      *
      * @return array<int,array<string,mixed>>
      */
-    private static function refOptions(string $table, string $prefix, string $extra = ''): array
+    private static function refOptions(string $table, string $prefix, string $extra = '', string $label = 'description'): array
     {
+        // $label is the column that holds the text shown in the list (ref_section uses "name", the others "description")
         $stmt = db()->prepare(
-            "SELECT {$prefix}_id, {$prefix}_description{$extra}
+            "SELECT {$prefix}_id, {$prefix}_{$label}{$extra}
              FROM {$table}
              WHERE ref_status_id = :active
-             ORDER BY {$prefix}_description"
+             ORDER BY {$prefix}_{$label}"
         );
         $stmt->execute(['active' => config('app.status')['ACTIVE']]);
 
@@ -164,7 +165,7 @@ final class EmployeeModel
     /** Sections carry their department ID so the form can filter them. @return array<int,array<string,mixed>> */
     public static function sectionOptions(): array
     {
-        return self::refOptions('ref_section', 'ref_section', ', ref_department_id');
+        return self::refOptions('ref_section', 'ref_section', ', ref_department_id', 'name');
     }
 
     /** @return array<int,array<string,mixed>> */

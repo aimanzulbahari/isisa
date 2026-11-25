@@ -324,7 +324,7 @@ $opts = static function (array $rows, string $key, string $label, bool $withDept
                         <div class="col-md-6">
                             <label for="fieldSection" class="form-label fw-medium small">Seksyen</label>
                             <select class="form-select" id="fieldSection" name="ref_section_id" required>
-                                <?= $opts($view['sections'], 'ref_section_id', 'ref_section_description', true) ?>
+                                <?= $opts($view['sections'], 'ref_section_id', 'ref_section_name', true) ?>
                             </select>
                             <div class="invalid-feedback">Sila pilih seksyen.</div>
                         </div>

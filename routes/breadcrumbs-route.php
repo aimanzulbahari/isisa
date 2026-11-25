@@ -52,6 +52,7 @@ return [
     'role-type' => [$dashboard, ['label' => 'Peranan', 'route' => null], ['label' => 'Jenis Peranan']],
     'users-users' => [$dashboard, ['label' => 'Pengguna', 'route' => null], ['label' => 'Pengguna']],
     'users-employee' => [$dashboard, ['label' => 'Pengguna', 'route' => null], ['label' => 'Kakitangan']],
+    'users-contractor' => [$dashboard, ['label' => 'Pengguna', 'route' => null], ['label' => 'Kontraktor']],
     'system-audit' => [$dashboard, ['label' => 'Tetapan Sistem', 'route' => null], ['label' => 'Jejak Audit']],
     'system-backup' => [$dashboard, ['label' => 'Tetapan Sistem', 'route' => null], ['label' => 'Backup Data']],
     'broadcast-program' => [$dashboard, ['label' => 'Hebahan', 'route' => null], ['label' => 'Program & Aktiviti']],

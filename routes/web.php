@@ -145,6 +145,11 @@ return [
         'file'  => 'MyModules/Dashboard/Operation-Data/Operation-Data.php',
         'guard' => 'auth',
     ],
+    '/Dashboard/Program-Activity' => [
+        'name'  => 'dashboard-program',
+        'file'  => 'MyModules/Dashboard/Program-Activity/Program-Activity.php',
+        'guard' => 'auth',
+    ],
     '/Broadcast/Program-Activity' => [
         'name'  => 'broadcast-program',
         'file'  => 'MyModules/Broadcast/Program-Activity/Program-Activity.php',
@@ -191,6 +196,11 @@ return [
     '/Management/Users/Employee' => [
         'name'  => 'users-employee',
         'file'  => 'MyModules/Management/Users/Employee/Employee.php',
+        'guard' => 'auth',
+    ],
+    '/Management/Users/Contractor' => [
+        'name'  => 'users-contractor',
+        'file'  => 'MyModules/Management/Users/Contractor/Contractor.php',
         'guard' => 'auth',
     ],
 

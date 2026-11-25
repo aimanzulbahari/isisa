@@ -17,7 +17,7 @@ require_once PUBLIC_PATH . '/library/js-library.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Program &amp; Aktiviti</title>
+    <title>Program Dan Aktiviti</title>
 
     <!-- Favicon (see src/components/favicon.php) -->
     <?php require SRC_PATH . '/components/favicon.php'; ?>

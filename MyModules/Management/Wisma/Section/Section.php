@@ -9,6 +9,14 @@ require_once dirname(__DIR__, 4) . '/core/config/bootstrap.php';
 require_once PUBLIC_PATH . '/library/font-library.php';
 require_once PUBLIC_PATH . '/library/css-library.php';
 require_once PUBLIC_PATH . '/library/js-library.php';
+
+// Page logic (see SectionController.php): POST saves and redirects, GET returns the data to show
+require_once __DIR__ . '/SectionController.php';
+$view = handleSection();
+
+$stats = $view['stats'];
+$old   = $view['old'];
+$statusActive = (int) config('app.status')['ACTIVE'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +63,7 @@ require_once PUBLIC_PATH . '/library/js-library.php';
                                 </div>
                             </div>
                             <div>
-                                <div class="stat-value tabular-nums mb-1">24</div>
+                                <div class="stat-value tabular-nums mb-1"><?= e($stats['total']) ?></div>
                                 <div class="stat-label">Jumlah Seksyen</div>
                             </div>
                         </div>
@@ -70,7 +78,7 @@ require_once PUBLIC_PATH . '/library/js-library.php';
                                 </div>
                             </div>
                             <div>
-                                <div class="stat-value tabular-nums mb-1">3</div>
+                                <div class="stat-value tabular-nums mb-1"><?= e($stats['not_active']) ?></div>
                                 <div class="stat-label">Seksyen Tidak Aktif</div>
                             </div>
                         </div>
@@ -85,7 +93,7 @@ require_once PUBLIC_PATH . '/library/js-library.php';
                                 </div>
                             </div>
                             <div>
-                                <div class="stat-value tabular-nums mb-1">21</div>
+                                <div class="stat-value tabular-nums mb-1"><?= e($stats['active']) ?></div>
                                 <div class="stat-label">Seksyen Aktif</div>
                             </div>
                         </div>
@@ -100,7 +108,7 @@ require_once PUBLIC_PATH . '/library/js-library.php';
                                 </div>
                             </div>
                             <div>
-                                <div class="stat-value tabular-nums mb-1">13 Nov 2026</div>
+                                <div class="stat-value tabular-nums mb-1"><?= $stats['last_updated'] ? e(date('d M Y', strtotime((string) $stats['last_updated']))) : '-' ?></div>
                                 <div class="stat-label">Kemaskini Terakhir</div>
                             </div>
                         </div>
@@ -119,128 +127,90 @@ require_once PUBLIC_PATH . '/library/js-library.php';
                                     <p class="text-muted small mb-0">Senarai rekod Seksyen yang aktif</p>
                                 </div>
 
-                                <!-- Bar Alat: Carian, Tapis, Set Semula & Tambah Data -->
-                                <div class="table-toolbar">
+                                <!-- Bar Alat: Carian, Tapis, Set Semula & Tambah Data (GET: dikendalikan di pelayan) -->
+                                <form method="get" action="<?= e(routeUrl('wisma-section')) ?>" class="table-toolbar" role="search">
                                     <div class="toolbar-search">
                                         <i class="bi bi-search" aria-hidden="true"></i>
-                                        <input type="search" id="tableSearch" class="form-control toolbar-ctl" placeholder="Cari rekod..." aria-label="Carian rekod">
+                                        <input type="search" id="sectionSearch" name="q" value="<?= e($view['q']) ?>" maxlength="100" class="form-control toolbar-ctl" placeholder="Cari kod, nama, keterangan atau jabatan..." aria-label="Carian rekod">
                                     </div>
-                                    <select id="filterStatus" class="form-select toolbar-ctl toolbar-select" aria-label="Tapis mengikut status">
+                                    <select id="sectionFilterStatus" name="status" class="form-select toolbar-ctl toolbar-select" aria-label="Tapis mengikut status">
                                         <option value="">Semua Status</option>
-                                        <!-- Dynamic get from ref_status only active and not_active -->
+                                        <?php foreach ($view['statusOptions'] as $opt): ?>
+                                            <option value="<?= e($opt['ref_status_id']) ?>" <?= (int) $opt['ref_status_id'] === $view['status'] ? 'selected' : '' ?>><?= e($opt['ref_status_description']) ?></option>
+                                        <?php endforeach; ?>
                                     </select>
-                                    <button type="button" id="btnFilter" class="btn btn-primary toolbar-ctl">
+                                    <button type="submit" class="btn btn-primary toolbar-ctl">
                                         <i class="bi bi-funnel" aria-hidden="true"></i><span>Tapis</span>
                                     </button>
-                                    <button type="button" id="btnReset" class="btn toolbar-ctl toolbar-ctl-outline">
-                                        <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i><span>Set Semula</span>
-                                    </button>
-                                    <button type="button" class="btn btn-primary toolbar-ctl" data-bs-toggle="modal" data-bs-target="#addDataModal">
+                                    <!-- Butang Set Semula: hanya dipaparkan apabila carian / tapisan sedang aktif -->
+                                    <?php if ($view['filtering']): ?>
+                                        <a href="<?= e(routeUrl('wisma-section')) ?>" class="btn toolbar-ctl toolbar-ctl-outline">
+                                            <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i><span>Set Semula</span>
+                                        </a>
+                                    <?php endif; ?>
+                                    <button type="button" class="btn btn-primary toolbar-ctl" id="btnAddSection" data-bs-toggle="modal" data-bs-target="#sectionModal">
                                         <i class="bi bi-plus-lg" aria-hidden="true"></i><span>Tambah Seksyen</span>
                                     </button>
-                                </div>
+                                </form>
                             </div>
 
-                            <!-- PHP: Gelung foreach untuk memaparkan baris jadual dari pangkalan data (gunakan htmlspecialchars()) -->
-                            <div class="table-responsive">
-                                <table class="table table-isisa align-middle">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" style="width: 60px;">No.</th>
-                                            <th scope="col">No. Rujukan</th>
-                                            <th scope="col">Seksyen</th>
-                                            <th scope="col">Tarikh</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col" class="text-center" style="width: 110px;">Tindakan</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="tabular-nums">
-                                        <tr>
-                                            <td class="text-muted">1</td>
-                                            <td class="fw-semibold">ISISA-2026-0891</td>
-                                            <td>Seksyen Kejuruteraan</td>
-                                            <td class="text-muted">13 Nov 2026</td>
-                                            <td>
-                                                <span class="badge-status badge-status-success">
-                                                    <i class="bi bi-circle-fill" style="font-size: 6px;" aria-hidden="true"></i>Diluluskan
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <div class="d-inline-flex gap-1">
-                                                    <a href="#" class="btn-action" aria-label="Sunting rekod" title="Sunting"><i class="bi bi-pencil" aria-hidden="true"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-muted">2</td>
-                                            <td class="fw-semibold">ISISA-2026-0890</td>
-                                            <td>Seksyen Perancangan</td>
-                                            <td class="text-muted">13 Nov 2026</td>
-                                            <td>
-                                                <span class="badge-status badge-status-warning">
-                                                    <i class="bi bi-circle-fill" style="font-size: 6px;" aria-hidden="true"></i>Semakan
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <div class="d-inline-flex gap-1">
-                                                    <a href="#" class="btn-action" aria-label="Sunting rekod" title="Sunting"><i class="bi bi-pencil" aria-hidden="true"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-muted">3</td>
-                                            <td class="fw-semibold">ISISA-2026-0889</td>
-                                            <td>Seksyen Pelesenan</td>
-                                            <td class="text-muted">12 Nov 2026</td>
-                                            <td>
-                                                <span class="badge-status badge-status-success">
-                                                    <i class="bi bi-circle-fill" style="font-size: 6px;" aria-hidden="true"></i>Diluluskan
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <div class="d-inline-flex gap-1">
-                                                    <a href="#" class="btn-action" aria-label="Sunting rekod" title="Sunting"><i class="bi bi-pencil" aria-hidden="true"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-muted">4</td>
-                                            <td class="fw-semibold">ISISA-2026-0888</td>
-                                            <td>Seksyen Landskap</td>
-                                            <td class="text-muted">12 Nov 2026</td>
-                                            <td>
-                                                <span class="badge-status badge-status-danger">
-                                                    <i class="bi bi-circle-fill" style="font-size: 6px;" aria-hidden="true"></i>Perlu Tindakan
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <div class="d-inline-flex gap-1">
-                                                    <a href="#" class="btn-action" aria-label="Sunting rekod" title="Sunting"><i class="bi bi-pencil" aria-hidden="true"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-muted">5</td>
-                                            <td class="fw-semibold">ISISA-2026-0887</td>
-                                            <td>Seksyen Khidmat Pengurusan</td>
-                                            <td class="text-muted">11 Nov 2026</td>
-                                            <td>
-                                                <span class="badge-status badge-status-success">
-                                                    <i class="bi bi-circle-fill" style="font-size: 6px;" aria-hidden="true"></i>Diluluskan
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <div class="d-inline-flex gap-1">
-                                                    <a href="#" class="btn-action" aria-label="Sunting rekod" title="Sunting"><i class="bi bi-pencil" aria-hidden="true"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <?php if ($view['groups'] === []): ?>
+                                <div class="text-center text-muted py-4">Tiada rekod seksyen ditemui.</div>
+                            <?php endif; ?>
+
+                            <!-- Satu akordion bagi setiap jabatan. Semua kumpulan dibuka semasa carian / tapisan aktif,
+                                 atau kumpulan jabatan yang baru disimpan (?open=ID jabatan). -->
+                            <div class="accordion accordion-isisa" id="sectionAccordion">
+                                <?php foreach ($view['groups'] as $group): ?>
+                                    <?php
+                                    $isOpen     = $view['filtering'] || $group['id'] === $view['open'];
+                                    $collapseId = 'dept' . $group['id'];
+                                    ?>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button<?= $isOpen ? '' : ' collapsed' ?>" type="button" data-bs-toggle="collapse" data-bs-target="#<?= e($collapseId) ?>" aria-expanded="<?= $isOpen ? 'true' : 'false' ?>" aria-controls="<?= e($collapseId) ?>">
+                                                <i class="bi bi-building acc-icon" aria-hidden="true"></i>
+                                                <span class="flex-grow-1"><?= e($group['name']) ?></span>
+                                                <span class="section-count"><?= e(count($group['sections'])) ?> Seksyen</span>
+                                            </button>
+                                        </h2>
+                                        <div id="<?= e($collapseId) ?>" class="accordion-collapse collapse<?= $isOpen ? ' show' : '' ?>"<?= $view['filtering'] ? '' : ' data-bs-parent="#sectionAccordion"' ?>>
+                                            <div class="accordion-body p-0">
+                                                <ul class="section-list list-unstyled mb-0">
+                                                    <?php foreach ($group['sections'] as $i => $row): ?>
+                                                        <li class="section-row">
+                                                            <span class="section-no text-muted"><?= e($i + 1) ?></span>
+                                                            <div class="section-info">
+                                                                <div class="section-name"><?= e($row['ref_section_name']) ?> <span class="text-muted small">(<?= e($row['ref_section_code']) ?>)</span></div>
+                                                                <?php if (trim((string) $row['ref_section_description']) !== ''): ?>
+                                                                    <div class="section-desc"><?= e($row['ref_section_description']) ?></div>
+                                                                <?php endif; ?>
+                                                            </div>
+                                                            <?= statusBadge((int) $row['ref_status_id'], $row['ref_status_description']) ?>
+                                                            <div class="d-inline-flex gap-1">
+                                                                <button type="button" class="btn-action btn-edit-section" aria-label="Sunting seksyen" title="Sunting"
+                                                                    data-bs-toggle="modal" data-bs-target="#sectionModal"
+                                                                    data-id="<?= e($row['ref_section_id']) ?>"
+                                                                    data-department="<?= e($row['ref_department_id']) ?>"
+                                                                    data-code="<?= e($row['ref_section_code']) ?>"
+                                                                    data-name="<?= e($row['ref_section_name']) ?>"
+                                                                    data-description="<?= e($row['ref_section_description']) ?>"
+                                                                    data-status="<?= e($row['ref_status_id']) ?>">
+                                                                    <i class="bi bi-pencil" aria-hidden="true"></i>
+                                                                </button>
+                                                            </div>
+                                                        </li>
+                                                    <?php endforeach; ?>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
 
-                            <!-- Pagination (10 rekod setiap halaman, see src/components/pagination.php) -->
-                            <?php require SRC_PATH . '/components/pagination.php'; ?>
+                            <div class="small text-muted mt-3 pt-3 border-top" aria-live="polite">
+                                Menunjukkan <?= e($view['total']) ?> seksyen dalam <?= e(count($view['groups'])) ?> jabatan
+                            </div>
                         </div>
                     </div>
 
@@ -254,39 +224,56 @@ require_once PUBLIC_PATH . '/library/js-library.php';
 
         </div>
     </div>
-    <!-- Modal Tambah Data -->
-    <div class="modal fade" id="addDataModal" tabindex="-1" aria-labelledby="addDataModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <form class="modal-content needs-validation" id="addDataForm" novalidate style="border-radius: var(--isisa-radius-lg); border: 1px solid var(--isisa-border);">
-                <!-- PHP: Hantar ke pelayan melalui POST bersama CSRF token & sahkan input di bahagian pelayan -->
+    <!-- Modal Tambah / Sunting Seksyen (POST ke pelayan; mod ditetapkan oleh action + id) -->
+    <div class="modal fade" id="sectionModal" tabindex="-1" aria-labelledby="sectionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <form class="modal-content needs-validation" id="sectionForm" method="post" action="<?= e(routeUrl('wisma-section')) ?>" novalidate style="border-radius: var(--isisa-radius-lg); border: 1px solid var(--isisa-border);">
+                <?= csrfField() ?>
+                <input type="hidden" name="action" id="sectionAction" value="create">
+                <input type="hidden" name="id" id="sectionId" value="">
+                <!-- Kekalkan carian / tapisan selepas simpan -->
+                <input type="hidden" name="q" value="<?= e($view['q']) ?>">
+                <input type="hidden" name="status" value="<?= e($view['status'] ?: '') ?>">
                 <div class="modal-header border-0 pb-0">
-                    <h2 class="modal-title h5 fw-bold" id="addDataModalLabel">Tambah Seksyen</h2>
+                    <h2 class="modal-title h5 fw-bold" id="sectionModalLabel">Tambah Seksyen</h2>
                     <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Tutup"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="fieldRujukan" class="form-label fw-medium small">Kod Seksyen</label>
-                        <input type="text" class="form-control" id="fieldRujukan" placeholder="cth: ISISA-2026-0892" maxlength="30" required>
-                        <div class="invalid-feedback">Sila masukkan no. rujukan.</div>
+                        <label for="fieldJabatan" class="form-label fw-medium small">Jabatan</label>
+                        <select class="form-select" id="fieldJabatan" name="department_id" required>
+                            <option value="">Pilih Jabatan</option>
+                            <?php foreach ($view['departments'] as $dept): ?>
+                                <option value="<?= e($dept['ref_department_id']) ?>"><?= e($dept['ref_department_description']) ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <div class="invalid-feedback">Sila pilih jabatan.</div>
                     </div>
-                    <div class="row g-3">
-                        <div class="col-sm-12">
-                            <label for="fieldStatus" class="form-label fw-medium small">Jabatan</label>
-                            <select class="form-select" id="fieldStatus" required>
-                                <!-- Dynamic get from ref_department only active status -->
-                            </select>
+                    <div class="row g-3 mb-3">
+                        <div class="col-12 col-md-4">
+                            <label for="fieldKodSeksyen" class="form-label fw-medium small">Kod Seksyen</label>
+                            <input type="text" class="form-control text-uppercase" id="fieldKodSeksyen" name="code" placeholder="cth: APL" maxlength="<?= e(SECTION_CODE_MAX) ?>" required>
+                            <div class="invalid-feedback">Sila masukkan kod seksyen.</div>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <label for="fieldNamaSeksyen" class="form-label fw-medium small">Nama Seksyen</label>
+                            <input type="text" class="form-control" id="fieldNamaSeksyen" name="name" placeholder="cth: Seksyen Aplikasi" maxlength="<?= e(SECTION_NAME_MAX) ?>" required>
+                            <div class="invalid-feedback">Sila masukkan nama seksyen.</div>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="fieldRujukan" class="form-label fw-medium small">Nama Seksyen</label>
-                        <input type="text" class="form-control" id="fieldRujukan" placeholder="cth: ISISA-2026-0892" maxlength="30" required>
-                        <div class="invalid-feedback">Sila masukkan no. rujukan.</div>
+                        <label for="fieldKeterangan" class="form-label fw-medium small">Keterangan Seksyen</label>
+                        <textarea class="form-control" id="fieldKeterangan" name="description" rows="4" maxlength="<?= e(SECTION_DESC_MAX) ?>" placeholder="Tulis keterangan seksyen di sini..."></textarea>
+                        <div class="form-text">Pilihan. Maksimum <?= e(SECTION_DESC_MAX) ?> aksara.</div>
                     </div>
                     <div class="mb-3">
                         <label for="fieldStatus" class="form-label fw-medium small">Status</label>
-                        <select class="form-select" id="fieldStatus" required>
-                            <!-- Dynamic get from ref_status only active and not_active -->
+                        <select class="form-select" id="fieldStatus" name="status_id" required>
+                            <?php foreach ($view['statusOptions'] as $opt): ?>
+                                <option value="<?= e($opt['ref_status_id']) ?>" <?= (int) $opt['ref_status_id'] === $statusActive ? 'selected' : '' ?>><?= e($opt['ref_status_description']) ?></option>
+                            <?php endforeach; ?>
                         </select>
+                        <div class="invalid-feedback">Sila pilih status.</div>
                     </div>
                 </div>
                 <div class="modal-footer border-0 pt-0">
@@ -307,6 +294,62 @@ require_once PUBLIC_PATH . '/library/js-library.php';
     <!-- Page scripts: type="module" because main.js imports its modules. Must come AFTER the libraries. -->
     <script type="module" src="<?= e(asset('assets/js/dashboard-js/main.js', true)) ?>"></script>
 
+    <!-- Halaman Seksyen: isi borang sunting, buka semula borang jika simpan ditolak, papar mesej (toastr) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var modalEl = document.getElementById('sectionModal');
+            var form = document.getElementById('sectionForm');
+            var defaultStatus = <?= json_encode((string) $statusActive) ?>;
+
+            function fillForm(mode, data) {
+                document.getElementById('sectionAction').value = mode;
+                document.getElementById('sectionId').value = data.id || '';
+                document.getElementById('fieldJabatan').value = data.department || '';
+                document.getElementById('fieldKodSeksyen').value = data.code || '';
+                document.getElementById('fieldNamaSeksyen').value = data.name || '';
+                document.getElementById('fieldKeterangan').value = data.description || '';
+                document.getElementById('fieldStatus').value = data.status || defaultStatus;
+                document.getElementById('sectionModalLabel').textContent = mode === 'update' ? 'Sunting Seksyen' : 'Tambah Seksyen';
+                form.classList.remove('was-validated');
+            }
+
+            // Butang Tambah / Sunting (modal dibuka oleh data-bs-toggle)
+            document.getElementById('btnAddSection').addEventListener('click', function () {
+                fillForm('create', {});
+            });
+            document.querySelectorAll('.btn-edit-section').forEach(function (btn) {
+                btn.addEventListener('click', function () { fillForm('update', btn.dataset); });
+            });
+
+            // Semakan ringkas sebelum hantar (pelayan tetap mengesahkan semula)
+            form.addEventListener('submit', function (e) {
+                if (!form.checkValidity()) {
+                    e.preventDefault();
+                    form.classList.add('was-validated');
+                }
+            });
+
+            <?php if ($old !== null): ?>
+            // Simpan ditolak: buka semula borang dengan nilai yang ditaip
+            fillForm(<?= json_encode((string) $old['action']) ?>, {
+                id: <?= json_encode((string) $old['id']) ?>,
+                department: <?= json_encode((string) $old['department_id']) ?>,
+                code: <?= json_encode((string) $old['code']) ?>,
+                name: <?= json_encode((string) $old['name']) ?>,
+                description: <?= json_encode((string) $old['description']) ?>,
+                status: <?= json_encode((string) $old['status']) ?>
+            });
+            bootstrap.Modal.getOrCreateInstance(modalEl).show();
+            <?php endif; ?>
+
+            // Mesej (papar sekali sahaja)
+            if (typeof toastr !== 'undefined') {
+                <?php foreach ($view['flash'] as $f): ?>
+                toastr[<?= json_encode(in_array($f['type'], ['success', 'error', 'warning', 'info'], true) ? $f['type'] : 'info') ?>](<?= json_encode((string) $f['message'], JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?>);
+                <?php endforeach; ?>
+            }
+        });
+    </script>
 
 </body>
 

@@ -29,6 +29,7 @@ import { initProfileAge } from './modules/profile-age.js';
 import { initPasswordToggle } from './modules/password-toggle.js';
 import { initMonthlyBar } from './modules/charts/monthly-bar.js';
 import { initAnnouncementForm } from './modules/announcement-form.js';
+import { initProgramCalendar } from './modules/program-calendar.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     initWelcomeHeader();
@@ -55,4 +56,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initPasswordToggle();
     initMonthlyBar();
     initAnnouncementForm();
+    initProgramCalendar();
 });
